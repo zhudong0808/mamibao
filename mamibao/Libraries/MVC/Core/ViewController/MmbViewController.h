@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MmbModel.h"
 #import "MmbStatusHandler.h"
+#import "MmbCustomNaviBarView.h"
 
-@interface MmbViewController : UIViewController<MmbModelDelegate,MmbStatusDelegate>
+@interface MmbViewController : UIViewController<MmbModelDelegate,MmbStatusDelegate,MmbCustomNaviBarViewDelegate>
 
 /**
  *  自定义NavigationBar
  */
-@property (nonatomic,strong) UIView *naviBar;
+@property (nonatomic,strong) MmbCustomNaviBarView *naviBar;
 
 
 @property (nonatomic,strong) MmbStatusHandler *statusHandler;

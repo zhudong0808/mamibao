@@ -33,7 +33,7 @@
     [label setFont:[UIFont systemFontOfSize:20]];
     label.text = @"哈哈";
     [testView addSubview:label];
-    
+        
 //    [self registerModel:self.mmbIndexModel];
 //    
 //    [self load];

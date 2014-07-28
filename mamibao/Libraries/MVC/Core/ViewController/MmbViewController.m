@@ -27,7 +27,14 @@
     //初始化naviBar
     _naviBar = [[MmbCustomNaviBarView alloc] initWithFrame:CGRectMake(0, 0, APP_CONTENT_WIDTH, isIOS7 ? 64 : 44)];
     _naviBar.backgroundColor = [UIColor redColor];
+    _naviBar.delegate = self;
+    
     [self.view addSubview:_naviBar];
+    
+    //配置是否显示返回按钮
+    if ([self.navigationController.viewControllers count] == 0) {
+//        _naviBar.leftBarItem = nil;
+    }
 }
 
 
@@ -97,6 +104,12 @@
         _statusHandler = [[MmbStatusHandler alloc] initWithStatusInfo:[[MmbStatusInfo alloc]init] delegate:self];
     }
     return _statusHandler;
+}
+
+
+#pragma makr - MmbCustomNaviBarViewDelegate
+-(void)backAction:(id)sender{
+    
 }
 
 
