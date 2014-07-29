@@ -40,6 +40,11 @@
  */
 -(void)load;
 
+/**
+ *  重新加载model数据
+ */
+-(void)reload;
+
 
 @end
 

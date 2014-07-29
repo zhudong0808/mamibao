@@ -13,7 +13,7 @@
 
 
 -(NSDictionary *)dataParams{
-    return @{@"methodName":@"testMethod"};
+    return @{@"action":@"list",@"type":@"516",@"vieworder":@"lastpost"};
 }
 
 -(NSDictionary *)systemParams{
@@ -25,8 +25,7 @@
 }
 
 -(NSArray *)parseResponse:(id)JSON error:(NSError *__autoreleasing *)error{
-    MmbIndexItem *item = [MmbIndexItem modelWithJSON:JSON];
-    NSArray *itemList = [NSArray arrayWithObjects:item, nil];
+    NSArray *itemList = [MmbIndexItem modelArrayWithJSON:[JSON objectForKey:@"info"]];
     return itemList;
 }
 

@@ -24,7 +24,7 @@
 
 -(id)init{
     if (self = [super init]) {
-        
+        self.requestType = mmbModelRequestTypeAFNetworking;
     }
     return self;
 }
@@ -36,6 +36,10 @@
         [self.itemList reset];
         [self loadInternal];
     }
+}
+
+-(void)reload{
+    
 }
 
 
@@ -63,7 +67,8 @@
     switch (self.requestType) {
         case mmbModelRequestTypeAFNetworking:
             clz = @"MmbAFRequest";
-            urlPath = @"api.php?";
+//            urlPath = @"api.php?";
+            urlPath = @"bbs.php?";
             break;
         case mmbModelRequestTypeCustom:
             clz = [self customRequestClassName] ? : @"MmbRequest";

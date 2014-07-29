@@ -22,18 +22,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = RGBCOLOR(0xff, 0xf9, 0xf8);
+    
     _modelDictInternal = [[NSMutableDictionary alloc]init];
     
     //初始化naviBar
     _naviBar = [[MmbCustomNaviBarView alloc] initWithFrame:CGRectMake(0, 0, APP_CONTENT_WIDTH, isIOS7 ? 64 : 44)];
-    _naviBar.backgroundColor = [UIColor redColor];
     _naviBar.delegate = self;
     
     [self.view addSubview:_naviBar];
     
     //配置是否显示返回按钮
     if ([self.navigationController.viewControllers count] == 0) {
-//        _naviBar.leftBarItem = nil;
+        _naviBar.leftBarItem = nil;
     }
 }
 
@@ -50,6 +52,15 @@
         MmbModel *model = (MmbModel *)obj;
         dispatch_async(dispatch_get_main_queue(), ^{
             [model load];
+        });
+    }];
+}
+
+-(void)reload{
+    [_modelDictInternal enumerateKeysAndObjectsUsingBlock:^(id key,id obj,BOOL *stop){
+        MmbModel *model = (MmbModel *)obj;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [model reload];
         });
     }];
 }

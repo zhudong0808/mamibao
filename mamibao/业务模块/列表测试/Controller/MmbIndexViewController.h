@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MmbViewController.h"
+#import "MmbTableViewController.h"
 
-@interface MmbIndexViewController : MmbViewController
+@interface MmbIndexViewController : MmbTableViewController
 
 @end

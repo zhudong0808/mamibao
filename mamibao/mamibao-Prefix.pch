@@ -15,16 +15,4 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#import "MmbMVCConfig.h"
-#import "UIViewAdditions.h"
-
-// 系统设置相关
-#define APP_SCREEN_BOUNDS   [[UIScreen mainScreen] bounds]
-#define APP_SCREEN_HEIGHT   (APP_SCREEN_BOUNDS.size.height)
-#define APP_SCREEN_WIDTH    (APP_SCREEN_BOUNDS.size.width)
-#define APP_STATUS_FRAME    [UIApplication sharedApplication].statusBarFrame
-#define APP_CONTENT_WIDTH   (APP_SCREEN_BOUNDS.size.width)
-#define APP_CONTENT_HEIGHT  (APP_SCREEN_BOUNDS.size.height-20)
-
-#define isIOS7 [[UIDevice currentDevice].systemVersion floatValue] > 6.9
-
+#import "MmbPreprocessorMacros.h"

@@ -11,7 +11,7 @@
 /**
  *  item的类型
  */
-typedef NS_ENUM(int, MmbTabViewItemType)
+typedef NS_ENUM(int, MmbTableViewItemType)
 {
     /**
      *  默认类型，子类应该继承这个类型
@@ -36,6 +36,6 @@ typedef NS_ENUM(int, MmbTabViewItemType)
 /**
  *  item的类型
  */
-@property (nonatomic,assign) MmbTabViewItemType itemType;
+@property (nonatomic,assign) MmbTableViewItemType itemType;
 
 @end

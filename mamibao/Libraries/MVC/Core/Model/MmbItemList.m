@@ -10,6 +10,8 @@
 
 @implementation MmbItemList
 
+@synthesize array = _array;
+
 +(id)array{
     return [[MmbItemList alloc] init];
 }
@@ -18,6 +20,17 @@
     [self removeAllObjects];
     self.currentPage = 0;
     self.totalCount = 0;
+}
+
+#pragma mark -
+#pragma mark Get
+
+- (NSMutableArray *)array {
+    if (!_array) {
+        _array = [NSMutableArray array];
+    }
+    
+    return _array;
 }
 
 #pragma mark - public method

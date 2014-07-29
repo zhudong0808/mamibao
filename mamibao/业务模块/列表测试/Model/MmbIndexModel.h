@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import "MmbModel.h"
+#import "MmbListModel.h"
 
-@interface MmbIndexModel : MmbModel
+@interface MmbIndexModel : MmbListModel
 
 @end

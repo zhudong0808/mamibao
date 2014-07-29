@@ -1,28 +1,37 @@
 //
-//  MmbTableViewCell.m
+//  MmbIndexTableViewCell.m
 //  mamibao
 //
-//  Created by zhudong on 14-7-2.
+//  Created by zhudong on 14-7-29.
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import "MmbTableViewCell.h"
+#import "MmbIndexTableViewCell.h"
+#import "MmbIndexItem.h"
 
-@implementation MmbTableViewCell
+@interface MmbIndexTableViewCell(){
 
-@synthesize item = _item;
+}
+
+@property (nonatomic,strong) UILabel *titleLabel;
+
+@end
+
+@implementation MmbIndexTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        _titleLabel = [MmbViewUtil simpleLabel:CGRectMake(12, 10, APP_CONTENT_WIDTH -24,40) f:20 tc:[UIColor redColor] t:@""];
+        [self addSubview:_titleLabel];
     }
     return self;
 }
 
--(void)setItem:(MmbTableViewItem *)item{
-    
+//setters
+-(void)setItem:(MmbIndexItem *)item{
+    _titleLabel.text = item.subject;
 }
 
 

@@ -43,13 +43,13 @@
     Class cellClass = [self cellClassForItem:item AtIndex:indexPath];
     //拿到name
     NSString* identifier = NSStringFromClass(cellClass);
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil)
     {
         cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    //TODO
+    [(MmbTableViewCell *)cell setItem:item];
     return cell;
 }
 
@@ -93,5 +93,16 @@
     return [MmbTableViewCell class];
 }
 
+
+
+#pragma mark - public method
+-(void)removeAllItems{
+    [_itemsForSectionInternal removeAllObjects];
+    _itemsForSectionInternal = nil;
+}
+
+-(void)tableViewControllerDidLoadModel:(MmbListModel *)model ForSection:(NSInteger)section{
+    [_itemsForSectionInternal setObject:model.itemList.array forKey:@(section)];
+}
 
 @end

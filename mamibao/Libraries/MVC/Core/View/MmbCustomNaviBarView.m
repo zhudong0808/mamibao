@@ -19,6 +19,7 @@
     if (self) {
         //设置默认的导航条左边按钮为返回按钮
         [self setDefaultLeftBarItem];
+        self.backgroundColor = RGBCOLOR(0xe3, 0x31, 0x25);
     }
     return self;
 }
@@ -39,7 +40,15 @@
         [_centerBarItem removeFromSuperview];
         _centerBarItem = nil;
     }
-    _centerBarItem = centerBarItem;
+    centerBarItem.frame = CGRectMake(APP_CONTENT_WIDTH/2-100/2, isIOS7?20:0, 100, 44);
+    centerBarItem.backgroundColor = [UIColor clearColor];
+    if ([centerBarItem isKindOfClass:[UILabel class]]) {
+        UILabel *centerBarItemLabel  = (UILabel *)centerBarItem;
+        centerBarItemLabel.textAlignment = NSTextAlignmentCenter;
+        _centerBarItem = centerBarItemLabel;
+    } else {
+        _centerBarItem = centerBarItem;
+    }
     if (_centerBarItem) {
         [self addSubview:_centerBarItem];
     }

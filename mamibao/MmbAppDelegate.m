@@ -7,7 +7,7 @@
 //
 
 #import "MmbAppDelegate.h"
-#import "MmbIndexViewController.h"
+#import "MmbHomeViewController.h"
 
 @implementation MmbAppDelegate
 
@@ -15,9 +15,9 @@
 {
     // Override point for customization after application launch.
     
-    MmbIndexViewController *indexVc = [[MmbIndexViewController alloc] init];
+    MmbHomeViewController *homeVc = [[MmbHomeViewController alloc] init];
     
-    self.window.rootViewController = indexVc;
+    self.window.rootViewController = homeVc;
     
     return YES;
 }

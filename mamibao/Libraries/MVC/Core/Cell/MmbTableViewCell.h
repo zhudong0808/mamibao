@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MmbTableViewItem.h"
 
 @interface MmbTableViewCell : UITableViewCell
+
+/**
+ *  绑定cell和item
+ */
+@property (nonatomic,strong) MmbTableViewItem *item;
 
 @end
