@@ -42,4 +42,7 @@
     [self.array addObjectsFromArray:otherArray];
 }
 
+- (id)objectAtIndex:(NSUInteger)index{
+    return  [self.array objectAtIndex:index];
+}
 @end

@@ -8,6 +8,7 @@
 
 #import "MmbAFRequest.h"
 #import "AFNetworking.h"
+#import "MmbSignature.h"
 
 @interface MmbAFRequest(){
 }
@@ -22,17 +23,16 @@
 @implementation MmbAFRequest
 
 -(void)load{
-//    [self.params addEntriesFromDictionary:self.systemParams];
     [self.delegate requestDidStartLoad:self];
     if (self.usePost) {
-        [self.afClient POST:_url parameters:self.params constructingBodyWithBlock:^(id<AFMultipartFormData> fromData){
+        [self.afClient POST:_url parameters:[self getAllParams] constructingBodyWithBlock:^(id<AFMultipartFormData> fromData){
         } success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self.delegate requestDidFinish:responseObject];
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [self.delegate requestDidFailWithError:error];
         }];
     } else {
-        [self.afClient GET:_url parameters:self.params success:^(AFHTTPRequestOperation *operation,id responseObject){
+        [self.afClient GET:_url parameters:[self getAllParams] success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self.delegate requestDidFinish:responseObject];
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [self.delegate requestDidFailWithError:error];
@@ -53,6 +53,19 @@
     self.systemParams = params;
 }
 
-
+//获取所有的参数字典
+-(NSMutableDictionary *)getAllParams{
+    NSMutableDictionary *allParams = [NSMutableDictionary dictionary];
+    [allParams setValuesForKeysWithDictionary:self.params];
+    [allParams setValuesForKeysWithDictionary:self.systemParams];
+    if (self.useAuth) {
+        [allParams setObject:[MmbAuthenticateCenter getEncryptString] forKey:@"encryptString"];
+    }
+    MmbSignature *signatureHelper = [MmbSignature new];
+    signatureHelper.params = allParams;
+    NSString *sign = [signatureHelper getSignString];
+    [allParams setObject:sign forKey:@"sign"];
+    return allParams;
+}
 
 @end

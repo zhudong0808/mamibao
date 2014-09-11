@@ -32,6 +32,12 @@
 
 
 /**
+ *  导航条右侧部分
+ */
+@property (nonatomic,strong) UIView *rightBarItem;
+
+
+/**
  *  自定义导航的代理对象，强制为viewController
  */
 @property (nonatomic,weak) UIViewController<MmbCustomNaviBarViewDelegate> *delegate;

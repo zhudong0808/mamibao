@@ -68,7 +68,7 @@
         case mmbModelRequestTypeAFNetworking:
             clz = @"MmbAFRequest";
 //            urlPath = @"api.php?";
-            urlPath = @"bbs.php?";
+            urlPath = @"testapi.php?";
             break;
         case mmbModelRequestTypeCustom:
             clz = [self customRequestClassName] ? : @"MmbRequest";
@@ -83,6 +83,7 @@
     [self.request initRequestWithBaseURL:urlPath];
     [self.request addSystemParams:systemParams];
     [self.request addParams:dataParams];
+    self.request.useAuth = self.useAuth;
     self.request.delegate = self;
     self.request.usePost = [self isPost];
     [self.request load];
@@ -98,7 +99,10 @@
 
 
 -(void)cancel{
-    
+    if (self.request) {
+        self.request = nil;
+    }
+    _status = mmbModelStatusReady;
 }
 
 

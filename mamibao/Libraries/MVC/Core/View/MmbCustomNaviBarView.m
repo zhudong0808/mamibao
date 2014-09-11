@@ -12,6 +12,7 @@
 
 @synthesize leftBarItem = _leftBarItem;
 @synthesize centerBarItem = _centerBarItem;
+@synthesize rightBarItem = _rightBarItem;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -51,6 +52,29 @@
     }
     if (_centerBarItem) {
         [self addSubview:_centerBarItem];
+    }
+}
+
+-(void)setRightBarItem:(UIView *)rightBarItem{
+    if (_rightBarItem) {
+        [_rightBarItem removeFromSuperview];
+        _rightBarItem = nil;
+    }
+    if (rightBarItem.width > 0) {
+        rightBarItem.frame = CGRectMake(APP_CONTENT_WIDTH-12-rightBarItem.width, isIOS7?20:0, rightBarItem.width, 44);
+    } else {
+        rightBarItem.frame = CGRectMake(210, isIOS7?20:0, APP_CONTENT_WIDTH-210-12, 44);
+    }
+    rightBarItem.backgroundColor = [UIColor clearColor];
+    if ([rightBarItem isKindOfClass:[UILabel class]]) {
+        UILabel *rightBarItemLabel = (UILabel *)rightBarItem;
+        rightBarItemLabel.textAlignment = NSTextAlignmentRight;
+        _rightBarItem = rightBarItemLabel;
+    } else {
+        _rightBarItem = rightBarItem;
+    }
+    if (_rightBarItem) {
+        [self addSubview:_rightBarItem];
     }
 }
 

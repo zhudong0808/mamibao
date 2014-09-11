@@ -12,5 +12,7 @@
 
 +(UILabel *)simpleLabel:(CGRect)frame f:(int)size tc:(UIColor *)color t:(NSString *)text;
 +(UILabel *)simpleLabel:(CGRect)frame bf:(int)size tc:(UIColor *)color t:(NSString *)text;
++(BOOL)isRetina;
++(void)drawLine:(CGRect)frame onView:(UIView *)pView color:(UIColor *)color;
 
 @end

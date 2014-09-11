@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import "MmbViewController.h"
+#import "MmbTableViewController.h"
 
-@interface MmbHomeViewController : MmbViewController
+@interface MmbHomeViewController : MmbTableViewController
 
 @end

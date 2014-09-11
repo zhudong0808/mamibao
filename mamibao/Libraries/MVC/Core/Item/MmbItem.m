@@ -10,7 +10,6 @@
 
 @implementation MmbItem
 
-
 -(id)initWithDictionary:(NSMutableDictionary *)dict{
     if (self = [super init]) {
         [self setValuesForKeysWithDictionary:dict];

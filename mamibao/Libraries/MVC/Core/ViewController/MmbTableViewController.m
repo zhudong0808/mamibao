@@ -50,6 +50,7 @@
 -(void)reload{
     [self.dataSource removeAllItems];
     [self reloadTableView];
+    [super reload];
 }
 
 

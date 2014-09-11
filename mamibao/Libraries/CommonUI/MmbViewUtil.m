@@ -29,5 +29,26 @@
     return label;
 }
 
++(BOOL)isRetina{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 4)
+    {
+        return  NO;
+    }
+    else
+    {
+        return [[UIScreen mainScreen] scale] > 1;
+    }
+}
+
+
++(void)drawLine:(CGRect)frame onView:(UIView *)pView color:(UIColor *)color{
+    UIView *line = [[UIView alloc] initWithFrame:frame];
+    if (![[self class] isRetina]) {
+        line.width = line.width<1?1:line.width;
+        line.height = line.height<1?1:line.height;
+    }
+    line.backgroundColor = color;
+    [pView addSubview:line];
+}
 
 @end
