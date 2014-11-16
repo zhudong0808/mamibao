@@ -31,25 +31,25 @@
 /**
  *  知识库模块更新数
  */
-@property (nonatomic,assign) NSInteger *zhishiCount;
+@property (nonatomic,assign) NSInteger zhishiCount;
 
 
 /**
  *  专家在线更新数
  */
-@property (nonatomic,assign) NSInteger *zhuanjiaCount;
+@property (nonatomic,assign) NSInteger zhuanjiaCount;
 
 
 /**
  *  成长记录更新数
  */
-@property (nonatomic,assign) NSInteger *chengzhangCount;
+@property (nonatomic,assign) NSInteger chengzhangCount;
 
 
 /**
  *  妈咪交流更新数
  */
-@property (nonatomic,assign) NSInteger *jiaoliuCount;
+@property (nonatomic,assign) NSInteger jiaoliuCount;
 
 
 @end

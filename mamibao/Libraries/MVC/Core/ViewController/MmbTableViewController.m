@@ -102,7 +102,9 @@
 
 
 -(void)showModel:(MmbModel *)model{
+    [super showModel:model];
     [self reloadTableView];
+    [self endRefreshing];
 }
 
 
@@ -114,6 +116,14 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)beginRefreshing{
+    [self.tableView.pullToRefreshView startAnimating];
+}
+
+-(void)endRefreshing{
+    [self.tableView.pullToRefreshView stopAnimating];
 }
 
 @end

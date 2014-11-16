@@ -6,8 +6,15 @@
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MmbHomeItem.h"
 
-@interface MmbHomeView : UITableView
+@interface MmbHomeView : NSObject
+
+-(UIView *)getTableHeaderView;
+
+-(UIView *)getTableFooterView;
+
+-(void)updateViewWithItem:(MmbHomeItem *)homeItem;
 
 @end

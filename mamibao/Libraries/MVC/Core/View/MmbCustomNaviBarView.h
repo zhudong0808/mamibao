@@ -12,7 +12,7 @@
 
 @optional
 
--(void)backAction:(id)sender;
+- (void)backAction:(id)sender;
 
 @end
 
@@ -41,6 +41,9 @@
  *  自定义导航的代理对象，强制为viewController
  */
 @property (nonatomic,weak) UIViewController<MmbCustomNaviBarViewDelegate> *delegate;
+
+
+- (void)setDefaultLeftBarItem;
 
 
 

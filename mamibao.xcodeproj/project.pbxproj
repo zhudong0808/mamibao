@@ -42,6 +42,8 @@
 		5398AA9C19AA1B6D00C1066F /* chengzhang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5398AA9819AA1B6D00C1066F /* chengzhang@2x.png */; };
 		5398AA9E19AA1CB500C1066F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5398AA9D19AA1CB500C1066F /* arrow@2x.png */; };
 		53A75A471962DC4B00862634 /* MmbItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A75A461962DC4B00862634 /* MmbItem.m */; };
+		53AAF54D1A14FD140020F2DE /* MmbLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AAF54B1A14FD140020F2DE /* MmbLoginViewController.m */; };
+		53AAF5501A14FD410020F2DE /* MmbLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AAF54F1A14FD410020F2DE /* MmbLoginView.m */; };
 		53B86AEC1987FA45009EF2C9 /* MmbIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B86ADB1987FA45009EF2C9 /* MmbIndexViewController.m */; };
 		53B86AED1987FA45009EF2C9 /* MmbIndexTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B86ADE1987FA45009EF2C9 /* MmbIndexTableViewDataSource.m */; };
 		53B86AEE1987FA45009EF2C9 /* MmbIndexTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B86AE11987FA45009EF2C9 /* MmbIndexTableViewDelegate.m */; };
@@ -126,6 +128,10 @@
 		5398AA9D19AA1CB500C1066F /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		53A75A451962DC4B00862634 /* MmbItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbItem.h; sourceTree = "<group>"; };
 		53A75A461962DC4B00862634 /* MmbItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbItem.m; sourceTree = "<group>"; };
+		53AAF54A1A14FD140020F2DE /* MmbLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbLoginViewController.h; sourceTree = "<group>"; };
+		53AAF54B1A14FD140020F2DE /* MmbLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbLoginViewController.m; sourceTree = "<group>"; };
+		53AAF54E1A14FD410020F2DE /* MmbLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbLoginView.h; sourceTree = "<group>"; };
+		53AAF54F1A14FD410020F2DE /* MmbLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbLoginView.m; sourceTree = "<group>"; };
 		53B86ADA1987FA45009EF2C9 /* MmbIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbIndexViewController.h; sourceTree = "<group>"; };
 		53B86ADB1987FA45009EF2C9 /* MmbIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbIndexViewController.m; sourceTree = "<group>"; };
 		53B86ADD1987FA45009EF2C9 /* MmbIndexTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbIndexTableViewDataSource.h; sourceTree = "<group>"; };
@@ -152,8 +158,9 @@
 		53D9A04519C1A3360057E18F /* MmbHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbHomeItem.m; sourceTree = "<group>"; };
 		53F7796119AE2C4C0040C447 /* MmbSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbSignature.h; sourceTree = "<group>"; };
 		53F7796219AE2C4C0040C447 /* MmbSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbSignature.m; sourceTree = "<group>"; };
-		C9E673267947467BB945260E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7DED121BFAE72C8B56AA2A18 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CEB4A9442FF84D7DABD2EE6B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6AB837DFD1F06F858FF95D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +275,7 @@
 				5391434F1955E6CF004555A2 /* mamibaoTests */,
 				539143291955E6CE004555A2 /* Frameworks */,
 				539143281955E6CE004555A2 /* Products */,
-				C9E673267947467BB945260E /* Pods.xcconfig */,
+				FEA4715C7167C15B9D1260D3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,6 +366,7 @@
 		53A75A3C1962DBB500862634 /* 业务模块 */ = {
 			isa = PBXGroup;
 			children = (
+				53F4DC4919DAD0A200B73AE9 /* 登录 */,
 				53B86AF21987FA67009EF2C9 /* 首页 */,
 				53B86AD81987FA45009EF2C9 /* 列表测试 */,
 			);
@@ -411,6 +419,24 @@
 				532777BE196422C500180420 /* MmbTableViewItem.m */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		53AAF5491A14FD140020F2DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				53AAF54A1A14FD140020F2DE /* MmbLoginViewController.h */,
+				53AAF54B1A14FD140020F2DE /* MmbLoginViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		53AAF54C1A14FD140020F2DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				53AAF54E1A14FD410020F2DE /* MmbLoginView.h */,
+				53AAF54F1A14FD410020F2DE /* MmbLoginView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		53B86AD81987FA45009EF2C9 /* 列表测试 */ = {
@@ -560,6 +586,24 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
+		53F4DC4919DAD0A200B73AE9 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				53AAF5491A14FD140020F2DE /* Controller */,
+				53AAF54C1A14FD140020F2DE /* View */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		FEA4715C7167C15B9D1260D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF6AB837DFD1F06F858FF95D /* Pods.debug.xcconfig */,
+				7DED121BFAE72C8B56AA2A18 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -689,7 +733,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -706,6 +750,7 @@
 				5393EE6319692A8200C6210C /* MmbViewController.m in Sources */,
 				53F7796319AE2C4C0040C447 /* MmbSignature.m in Sources */,
 				530DD15F1987E2E300F163F7 /* MmbViewUtil.m in Sources */,
+				53AAF54D1A14FD140020F2DE /* MmbLoginViewController.m in Sources */,
 				530DD14D198735E600F163F7 /* MmbTableViewDelegate.m in Sources */,
 				53B86B031988ECFD009EF2C9 /* MmbHomeModel.m in Sources */,
 				53B86AEE1987FA45009EF2C9 /* MmbIndexTableViewDelegate.m in Sources */,
@@ -714,6 +759,7 @@
 				53B86AEC1987FA45009EF2C9 /* MmbIndexViewController.m in Sources */,
 				5393EE5F196679A900C6210C /* MmbAFRequest.m in Sources */,
 				5393EE5519654D9000C6210C /* MmbRequest.m in Sources */,
+				53AAF5501A14FD410020F2DE /* MmbLoginView.m in Sources */,
 				53B86AF11987FA45009EF2C9 /* MmbIndexTableViewCell.m in Sources */,
 				532777C7196451D900180420 /* MmbModel.m in Sources */,
 				5346ED7F19699E3E000FAAFE /* MmbStatusInfo.m in Sources */,
@@ -851,7 +897,7 @@
 		};
 		5391435A1955E6CF004555A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9E673267947467BB945260E /* Pods.xcconfig */;
+			baseConfigurationReference = CF6AB837DFD1F06F858FF95D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -866,7 +912,7 @@
 		};
 		5391435B1955E6CF004555A2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9E673267947467BB945260E /* Pods.xcconfig */;
+			baseConfigurationReference = 7DED121BFAE72C8B56AA2A18 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

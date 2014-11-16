@@ -16,7 +16,7 @@
 }
 
 -(NSDictionary *)systemParams{
-    return nil;
+    return @{@"v":@"1.0"};
 }
 
 -(NSString *)methodName{
@@ -30,7 +30,7 @@
 }
 
 -(BOOL)useAuth{
-    return NO;
+    return YES;
 }
 
 

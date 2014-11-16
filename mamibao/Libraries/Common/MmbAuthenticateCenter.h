@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MmbLoginViewController.h"
 
 @interface MmbAuthenticateCenter : NSObject
 
@@ -18,13 +19,23 @@
 +(MmbAuthenticateCenter *)shareInstance;
 
 /**
+ *  获取sid
+ *
+ *  @return sid
+ */
++ (NSString *)getEncryptString;
+
+/**
  *  是否登录
  *
  *  @return YES:登录 NO:未登录
  */
-+(BOOL)isLogin;
+- (BOOL)isLogin;
 
-
-+(NSString *)getEncryptString;
-
+/**
+ *  登录认证，回调
+ *
+ *  @param completion 回调处理内容
+ */
+- (void)authenticateWithCompletion:(MmbLoginCompletion)completion;
 @end

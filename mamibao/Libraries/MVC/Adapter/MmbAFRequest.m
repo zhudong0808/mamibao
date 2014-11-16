@@ -28,21 +28,40 @@
         [self.afClient POST:_url parameters:[self getAllParams] constructingBodyWithBlock:^(id<AFMultipartFormData> fromData){
         } success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self.delegate requestDidFinish:responseObject];
+            #ifdef ifDebug
+            NSLog([NSString stringWithFormat:@"url=%@,\nresponseObject=%@",operation.request.URL,responseObject],nil);
+            #endif
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [self.delegate requestDidFailWithError:error];
         }];
     } else {
         [self.afClient GET:_url parameters:[self getAllParams] success:^(AFHTTPRequestOperation *operation,id responseObject){
             [self.delegate requestDidFinish:responseObject];
+            #ifdef ifDebug
+            NSLog([NSString stringWithFormat:@"requestUrl=%@,\nresponseObject=%@",operation.request.URL,responseObject],nil);
+            #endif
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+            NSLog([NSString stringWithFormat:@"requestUrl=%@,\nresponseObject=%@",operation.request.URL,error],nil);
             [self.delegate requestDidFailWithError:error];
         }];
     }
 }
 
 -(void)initRequestWithBaseURL:(NSString *)url{
+    
     _url = url;
     self.afClient = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:API_URL]];
+    
+    //登录操作
+    if (self.useAuth && self.showLogin) {
+        [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+            if (success == YES) {
+                [self load];
+            }
+        }];
+    } else {
+        [self load];
+    }
 }
 
 -(void)addParams:(NSMutableDictionary *)params{
@@ -66,6 +85,10 @@
     NSString *sign = [signatureHelper getSignString];
     [allParams setObject:sign forKey:@"sign"];
     return allParams;
+}
+
+- (void)dealloc {
+   
 }
 
 @end

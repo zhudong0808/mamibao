@@ -25,8 +25,14 @@
 
 @property (nonatomic,assign) BOOL useCache;
 
+/**
+ *  接口是否需要登录
+ */
 @property (nonatomic,assign) BOOL useAuth;
 
+/**
+ *  是否需要弹出登录框
+ */
 @property (nonatomic,assign) BOOL showLogin;
 
 @property (nonatomic,assign) NSTimeInterval apiCacheTimeOutSeconds;
