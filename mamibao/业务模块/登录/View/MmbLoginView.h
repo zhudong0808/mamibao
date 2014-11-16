@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MmbLoginViewDelegate <NSObject>
+
+- (void)onClickFindPasswordBtn;
+- (void)onCLickRegisterBtn;
+
+@end
+
 @interface MmbLoginView : UIView
+
+@property (nonatomic, strong) UITextField *mobileTextField;
+@property (nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, weak) id<MmbLoginViewDelegate> delegate;
 
 @end

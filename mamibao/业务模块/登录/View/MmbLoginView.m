@@ -29,16 +29,16 @@
         mobileBGView.layer.borderWidth = 0.5;
         [self addSubview:mobileBGView];
         
-        UITextField *mobileTextField = [[UITextField alloc] initWithFrame:CGRectMake(kMarginLeftAndRight, kTextFieldContainerHeight/2-20/2, APP_CONTENT_WIDTH-4*kMarginLeftAndRight, 20)];
-        mobileTextField.placeholder = @"手机号码";
-        mobileTextField.textColor = HEXCOLOR(0x000000);
-        mobileTextField.textAlignment = NSTextAlignmentLeft;
-        mobileTextField.borderStyle = UITextBorderStyleNone;
-        mobileTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        mobileTextField.backgroundColor = [UIColor clearColor];
-        mobileTextField.font = [UIFont systemFontOfSize:16];
-        mobileTextField.keyboardType = UIKeyboardTypeDecimalPad;
-        [mobileBGView addSubview:mobileTextField];
+        _mobileTextField = [[UITextField alloc] initWithFrame:CGRectMake(kMarginLeftAndRight, kTextFieldContainerHeight/2-20/2, APP_CONTENT_WIDTH-4*kMarginLeftAndRight, 20)];
+        _mobileTextField.placeholder = @"手机号码";
+        _mobileTextField.textColor = HEXCOLOR(0x000000);
+        _mobileTextField.textAlignment = NSTextAlignmentLeft;
+        _mobileTextField.borderStyle = UITextBorderStyleNone;
+        _mobileTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _mobileTextField.backgroundColor = [UIColor clearColor];
+        _mobileTextField.font = [UIFont systemFontOfSize:16];
+        _mobileTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        [mobileBGView addSubview:_mobileTextField];
     
         
         UIView *passwordBGView = [[UIView alloc] initWithFrame:CGRectMake(kMarginLeftAndRight, mobileBGView.bottom + kMarginTopAndBottom, APP_CONTENT_WIDTH - 2*kMarginLeftAndRight, kTextFieldContainerHeight)];
@@ -48,16 +48,16 @@
         passwordBGView.layer.borderWidth = 0.5;
         [self addSubview:passwordBGView];
         
-        UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(kMarginLeftAndRight, kTextFieldContainerHeight/2-20/2, APP_CONTENT_WIDTH-4*kMarginLeftAndRight, 20)];
-        passwordTextField.placeholder = @"密码";
-        passwordTextField.textColor = HEXCOLOR(0x000000);
-        passwordTextField.textAlignment = NSTextAlignmentLeft;
-        passwordTextField.borderStyle = UITextBorderStyleNone;
-        passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        passwordTextField.backgroundColor = [UIColor clearColor];
-        passwordTextField.font = [UIFont systemFontOfSize:16];
-        passwordTextField.secureTextEntry = YES;
-        [passwordBGView addSubview:passwordTextField];
+        _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(kMarginLeftAndRight, kTextFieldContainerHeight/2-20/2, APP_CONTENT_WIDTH-4*kMarginLeftAndRight, 20)];
+        _passwordTextField.placeholder = @"密码";
+        _passwordTextField.textColor = HEXCOLOR(0x000000);
+        _passwordTextField.textAlignment = NSTextAlignmentLeft;
+        _passwordTextField.borderStyle = UITextBorderStyleNone;
+        _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _passwordTextField.backgroundColor = [UIColor clearColor];
+        _passwordTextField.font = [UIFont systemFontOfSize:16];
+        _passwordTextField.secureTextEntry = YES;
+        [passwordBGView addSubview:_passwordTextField];
         
         
         UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -69,8 +69,40 @@
         submitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
         [self addSubview:submitBtn];
         
+        
+        UIButton *findPasswordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        findPasswordBtn.frame = CGRectMake(kMarginLeftAndRight, self.height - 25 - 12, 60, 12);
+        findPasswordBtn.backgroundColor = [UIColor clearColor];
+        [findPasswordBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
+        [findPasswordBtn setTitleColor:HEXCOLOR(0xe60000) forState:UIControlStateNormal];
+        findPasswordBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [findPasswordBtn addTarget:self action:@selector(onClickFindPasswordBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:findPasswordBtn];
+        
+        UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        registerBtn.frame = CGRectMake(APP_CONTENT_WIDTH - kMarginLeftAndRight - 60, findPasswordBtn.top, 60, 12);
+        registerBtn.backgroundColor = [UIColor clearColor];
+        [registerBtn setTitle:@"加入妈咪宝" forState:UIControlStateNormal];
+        [registerBtn setTitleColor:HEXCOLOR(0xe60000) forState:UIControlStateNormal];
+        registerBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [registerBtn addTarget:self action:@selector(onClickRegisterBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:registerBtn];
+        
+        
     }
     return self;
+}
+
+- (void)onClickFindPasswordBtn {
+    if ([self.delegate respondsToSelector:@selector(onClickFindPasswordBtn)]) {
+        [self.delegate onClickFindPasswordBtn];
+    }
+}
+
+- (void)onClickRegisterBtn {
+    if ([self.delegate respondsToSelector:@selector(onCLickRegisterBtn)]) {
+        [self.delegate onCLickRegisterBtn];
+    }
 }
 
 /*

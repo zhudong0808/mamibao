@@ -7,10 +7,11 @@
 //
 
 #import "MmbViewController.h"
+#import "MmbLoginView.h"
 
 typedef void (^MmbLoginCompletion)(BOOL success);
 
-@interface MmbLoginViewController : MmbViewController
+@interface MmbLoginViewController : MmbViewController<MmbLoginViewDelegate>
 
 @property (nonatomic,strong) MmbLoginCompletion loginCompletion;
 

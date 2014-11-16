@@ -78,7 +78,7 @@
     [allParams setValuesForKeysWithDictionary:self.params];
     [allParams setValuesForKeysWithDictionary:self.systemParams];
     if (self.useAuth) {
-        [allParams setObject:[MmbAuthenticateCenter getEncryptString] forKey:@"encryptString"];
+        [allParams setObject:[MmbAuthenticateCenter getEncryptString] forKey:@"sid"];
     }
     MmbSignature *signatureHelper = [MmbSignature new];
     signatureHelper.params = allParams;

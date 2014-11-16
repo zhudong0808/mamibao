@@ -7,9 +7,10 @@
 //
 
 #import "MmbLoginViewController.h"
-#import "MmbLoginView.h"
 
 @interface MmbLoginViewController ()
+
+@property (nonatomic, strong) MmbLoginView *loginView;
 
 @end
 
@@ -22,8 +23,11 @@
     [self.naviBar setDefaultLeftBarItem];
     self.naviBar.centerBarItem = [MmbViewUtil simpleLabel:CGRectMake(0, 0, 100, 44) bf:24 tc:[UIColor whiteColor] t:@"登录"];
     
-    MmbLoginView *loginView = [[MmbLoginView alloc] initWithFrame:CGRectMake(0, self.naviBar.bottom, APP_CONTENT_WIDTH, APP_CONTENT_HEIGHT - 20)];
-    [self.view addSubview:loginView];
+    _loginView = [[MmbLoginView alloc] initWithFrame:CGRectMake(0, self.naviBar.bottom, APP_CONTENT_WIDTH, APP_CONTENT_HEIGHT - 20 - 44)];
+    [self.view addSubview:_loginView];
+    
+    UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disableEditing)];
+    [self.view addGestureRecognizer:gesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,10 +35,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - private methods
+- (void)disableEditing {
+    [_loginView.mobileTextField resignFirstResponder];
+    [_loginView.passwordTextField resignFirstResponder];
+}
+
 #pragma mark - MmbCustomNaviBarViewDelegate
--(void)backAction:(id)sender{
+-(void)backAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     self.loginCompletion(NO);
+}
+
+#pragma mark - MmbLoginViewDelegate
+- (void)onClickFindPasswordBtn {
+    //TODO
+}
+
+- (void)onCLickRegisterBtn {
+    //TODO
 }
 
 
