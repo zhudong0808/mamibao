@@ -7,10 +7,14 @@
 //
 
 #import "MmbLoginViewController.h"
+#import "MmbLoginModel.h"
+#import "MmbLoginItem.h"
+#import "SFHFKeychainUtils.h"
 
 @interface MmbLoginViewController ()
 
 @property (nonatomic, strong) MmbLoginView *loginView;
+@property (nonatomic, strong) MmbLoginModel *loginModel;
 
 @end
 
@@ -24,16 +28,47 @@
     self.naviBar.centerBarItem = [MmbViewUtil simpleLabel:CGRectMake(0, 0, 100, 44) bf:24 tc:[UIColor whiteColor] t:@"登录"];
     
     _loginView = [[MmbLoginView alloc] initWithFrame:CGRectMake(0, self.naviBar.bottom, APP_CONTENT_WIDTH, APP_CONTENT_HEIGHT - 20 - 44)];
+    _loginView.delegate = self;
     [self.view addSubview:_loginView];
     
     UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disableEditing)];
     [self.view addGestureRecognizer:gesture];
+    
+    [self registerModel:self.loginModel];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - MmbViewController(SubClassing)
+- (void)showLoading:(MmbModel *)model {
+    [super showLoading:model];
+    [self.statusHandler showLoadingViewInView:self.view frame:self.view.bounds];
+}
+
+- (void)showModel:(MmbModel *)model {
+    [super showModel:model];
+    MmbLoginItem *loginItem = (MmbLoginItem *)[model.itemList objectAtIndex:0];
+    [SFHFKeychainUtils storeUsername:keyChainEncryptString andPassword:loginItem.sid forServiceName:keyChainServiceName updateExisting:YES error:nil];
+    [MmbGlobal showProgressHUD:@"登录成功" duration:1.0];
+    
+    if (self.loginCompletion) {
+        self.loginCompletion(YES);
+    }
+    self.loginCompletion = nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+- (void)showError:(NSError *)error withModel:(MmbModel *)model {
+    [super showError:error withModel:model];
+    [SFHFKeychainUtils deleteItemForUsername:keyChainEncryptString andServiceName:keyChainServiceName error:nil];
+    [MmbGlobal showProgressHUD:error.localizedDescription duration:1.0];
+}
+
 
 #pragma mark - private methods
 - (void)disableEditing {
@@ -42,18 +77,35 @@
 }
 
 #pragma mark - MmbCustomNaviBarViewDelegate
--(void)backAction:(id)sender {
+- (void)backAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     self.loginCompletion(NO);
 }
+
+
+#pragma mark - getter
+- (MmbLoginModel *)loginModel {
+    if (!_loginModel) {
+        _loginModel = [[MmbLoginModel alloc] init];
+        _loginModel.key = @"_loginModel_";
+    }
+    return _loginModel;
+}
+
 
 #pragma mark - MmbLoginViewDelegate
 - (void)onClickFindPasswordBtn {
     //TODO
 }
 
-- (void)onCLickRegisterBtn {
+- (void)onClickRegisterBtn {
     //TODO
+}
+
+- (void)onClickSubmitBtn {
+    self.loginModel.username = _loginView.mobileTextField.text;
+    self.loginModel.password = _loginView.passwordTextField.text;
+    [self load];
 }
 
 

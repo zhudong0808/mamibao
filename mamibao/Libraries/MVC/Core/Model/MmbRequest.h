@@ -41,6 +41,8 @@
 
 @property (nonatomic,weak) id<MmbRequestDelegate> delegate;
 
+@property (nonatomic, strong) NSString *methodName;
+
 /**
  *  发起请求
  */

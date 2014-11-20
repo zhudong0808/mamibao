@@ -28,6 +28,8 @@
 @property (nonatomic,strong) MmbStatusInfo *statusInfo;
 @property (nonatomic,weak) id<MmbStatusDelegate> delegate;
 
--(id)initWithStatusInfo:(MmbStatusInfo *)statusInfo delegate:(id<MmbStatusDelegate>)delegate;
+- (id)initWithStatusInfo:(MmbStatusInfo *)statusInfo delegate:(id<MmbStatusDelegate>)delegate;
+- (void)removeStatusViewFromView:(UIView *)view;
+- (void)showLoadingViewInView:(UIView *)parentView frame:(CGRect)frame;
 
 @end

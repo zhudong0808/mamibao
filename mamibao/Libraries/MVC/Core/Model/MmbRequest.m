@@ -16,6 +16,7 @@
 @synthesize showLogin = _showLogin;
 @synthesize usePost = _usePost;
 @synthesize delegate = _delegate;
+@synthesize methodName = _methodName;
 
 
 -(void)load{

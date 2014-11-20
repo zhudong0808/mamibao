@@ -10,6 +10,7 @@
 #import "MmbHomeView.h"
 #import "MmbHomeModel.h"
 #import "MmbhomeItem.h"
+#import "SFHFKeychainUtils.h"
 
 @interface MmbHomeViewController ()
 
@@ -53,6 +54,8 @@
 }
 
 -(void)loadData{
+    [SFHFKeychainUtils deleteItemForUsername:keyChainEncryptString andServiceName:keyChainServiceName error:nil];
+
 //    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
         [self load];
 //    }

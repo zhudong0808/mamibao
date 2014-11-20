@@ -76,11 +76,13 @@
     [self didLoadModel:model];
     if ([self canShowModel:model]) {
         [self showModel:model];
+    } else {
+        [self showEmpty:model];
     }
 }
 
 -(void)modeldidFail:(MmbModel *)model withError:(NSError *)error{
-
+    [self showError:error withModel:model];
 }
 
 
@@ -94,19 +96,20 @@
 }
 
 - (void)showEmpty:(MmbModel *)model{
-
+    [self.statusHandler removeStatusViewFromView:self.view];
 }
 
 - (void)showModel:(MmbModel *)model{
-
+    [self.statusHandler removeStatusViewFromView:self.view];
 }
 
 - (void)showLoading:(MmbModel *)model{
-    
+    [self.statusHandler removeStatusViewFromView:self.view];
 }
 
 - (void)showError:(NSError *)error withModel:(MmbModel*)model{
-
+    
+    [self.statusHandler removeStatusViewFromView:self.view];
 }
 
 #pragma mark - MmbStatusHandler singleton

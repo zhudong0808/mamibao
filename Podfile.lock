@@ -20,20 +20,23 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - MBProgressHUD (0.9)
   - NSHash (1.0.1)
   - SFHFKeychainUtils (0.0.1)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3.1)
+  - MBProgressHUD (~> 0.8)
   - NSHash (~> 1.0.1)
   - SFHFKeychainUtils (~> 0.0.1)
   - SVPullToRefresh (~> 0.4.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  NSHash: 757e3ba784954b730eae472f3f4e12eb79a18d82
+  AFNetworking: de3f1e60fae67f0a892562da561ea3daebaa00dd
+  MBProgressHUD: d326d634b8e54d371e0a714c7c4cf8e0aff1558f
+  NSHash: c610ad80107348f2f5b04b8a694c1217736f5b80
   SFHFKeychainUtils: 6fdda05a86d035db406c7662ec1054814b68f0fd
-  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  SVPullToRefresh: ed2780467bd4a16a346388e6f628ce983d100f62
 
 COCOAPODS: 0.34.4

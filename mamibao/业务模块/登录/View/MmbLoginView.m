@@ -12,6 +12,13 @@
 #define kMarginTopAndBottom 12
 #define kTextFieldContainerHeight 42
 
+@interface MmbLoginView(){
+}
+
+@property (nonatomic, strong) UIButton *submitBtn;
+
+@end
+
 @implementation MmbLoginView
 
 
@@ -38,6 +45,7 @@
         _mobileTextField.backgroundColor = [UIColor clearColor];
         _mobileTextField.font = [UIFont systemFontOfSize:16];
         _mobileTextField.keyboardType = UIKeyboardTypeDecimalPad;
+        [_mobileTextField addTarget:self action:@selector(updateSubmitBtn) forControlEvents:UIControlEventEditingChanged];
         [mobileBGView addSubview:_mobileTextField];
     
         
@@ -57,17 +65,20 @@
         _passwordTextField.backgroundColor = [UIColor clearColor];
         _passwordTextField.font = [UIFont systemFontOfSize:16];
         _passwordTextField.secureTextEntry = YES;
+        [_passwordTextField addTarget:self action:@selector(updateSubmitBtn) forControlEvents:UIControlEventEditingChanged];
         [passwordBGView addSubview:_passwordTextField];
         
         
-        UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        submitBtn.frame = CGRectMake(kMarginLeftAndRight, passwordBGView.bottom + kMarginTopAndBottom, APP_CONTENT_WIDTH - 2*kMarginLeftAndRight, kTextFieldContainerHeight);
-        submitBtn.backgroundColor = HEXCOLOR(0xe33125);
-        submitBtn.layer.cornerRadius = 3;
-        [submitBtn setTitle:@"登录" forState:UIControlStateNormal];
-        [submitBtn setTitleColor:HEXCOLOR(0xffffff) forState:UIControlStateNormal];
-        submitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [self addSubview:submitBtn];
+        _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _submitBtn.frame = CGRectMake(kMarginLeftAndRight, passwordBGView.bottom + kMarginTopAndBottom, APP_CONTENT_WIDTH - 2*kMarginLeftAndRight, kTextFieldContainerHeight);
+        _submitBtn.backgroundColor = HEXCOLOR(0xcccccc);
+        _submitBtn.layer.cornerRadius = 3;
+        [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [_submitBtn setTitleColor:HEXCOLOR(0xffffff) forState:UIControlStateNormal];
+        _submitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        _submitBtn.enabled = NO;
+        [_submitBtn addTarget:self action:@selector(onClickSubmitBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_submitBtn];
         
         
         UIButton *findPasswordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,17 +111,33 @@
 }
 
 - (void)onClickRegisterBtn {
-    if ([self.delegate respondsToSelector:@selector(onCLickRegisterBtn)]) {
-        [self.delegate onCLickRegisterBtn];
+    if ([self.delegate respondsToSelector:@selector(onClickRegisterBtn)]) {
+        [self.delegate onClickRegisterBtn];
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)updateSubmitBtn {
+    if ([_mobileTextField.text length] > 0 || [_passwordTextField.text length] > 0) {
+        _submitBtn.enabled = YES;
+        _submitBtn.backgroundColor = HEXCOLOR(0xe33125);
+    } else if ([_mobileTextField.text length] == 0 && [_passwordTextField.text length] == 0) {
+        _submitBtn.enabled = NO;
+        _submitBtn.backgroundColor = HEXCOLOR(0xcccccc);
+    }
 }
-*/
+
+- (void)onClickSubmitBtn {
+    NSString *mobileRegex = @"^((1[3|5|8|7][0-9])\\d{8}$)";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",mobileRegex];
+    BOOL isMobile = [predicate evaluateWithObject:_mobileTextField.text];
+    if (isMobile == NO) {
+        [MmbGlobal showProgressHUD:@"手机号码格式错误" duration:2.0];
+        return;
+    } else {
+        if ([self.delegate respondsToSelector:@selector(onClickSubmitBtn)]) {
+            [self.delegate onClickSubmitBtn];
+        }
+    }
+}
 
 @end

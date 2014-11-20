@@ -27,19 +27,17 @@
     if (self.usePost) {
         [self.afClient POST:_url parameters:[self getAllParams] constructingBodyWithBlock:^(id<AFMultipartFormData> fromData){
         } success:^(AFHTTPRequestOperation *operation,id responseObject){
-            [self.delegate requestDidFinish:responseObject];
-            #ifdef ifDebug
-            NSLog([NSString stringWithFormat:@"url=%@,\nresponseObject=%@",operation.request.URL,responseObject],nil);
-            #endif
+            
+            [self internalRequestDidFinish:operation responseObject:responseObject];
+            
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [self.delegate requestDidFailWithError:error];
         }];
     } else {
         [self.afClient GET:_url parameters:[self getAllParams] success:^(AFHTTPRequestOperation *operation,id responseObject){
-            [self.delegate requestDidFinish:responseObject];
-            #ifdef ifDebug
-            NSLog([NSString stringWithFormat:@"requestUrl=%@,\nresponseObject=%@",operation.request.URL,responseObject],nil);
-            #endif
+            
+            [self internalRequestDidFinish:operation responseObject:responseObject];
+            
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             NSLog([NSString stringWithFormat:@"requestUrl=%@,\nresponseObject=%@",operation.request.URL,error],nil);
             [self.delegate requestDidFailWithError:error];
@@ -59,8 +57,6 @@
                 [self load];
             }
         }];
-    } else {
-        [self load];
     }
 }
 
@@ -77,6 +73,7 @@
     NSMutableDictionary *allParams = [NSMutableDictionary dictionary];
     [allParams setValuesForKeysWithDictionary:self.params];
     [allParams setValuesForKeysWithDictionary:self.systemParams];
+    [allParams setObject:self.methodName forKey:@"methodName"];
     if (self.useAuth) {
         [allParams setObject:[MmbAuthenticateCenter getEncryptString] forKey:@"sid"];
     }
@@ -85,6 +82,20 @@
     NSString *sign = [signatureHelper getSignString];
     [allParams setObject:sign forKey:@"sign"];
     return allParams;
+}
+
+- (void)internalRequestDidFinish:(AFHTTPRequestOperation *)operation responseObject:(id)responseObject {
+#ifdef ifDebug
+    NSLog([NSString stringWithFormat:@"requestUrl=%@,\nresponseObject=%@",operation.request.URL,responseObject],nil);
+#endif
+    NSArray *ret = [responseObject objectForKey:@"ret"];
+    NSArray *retArray = [[ret objectAtIndex:0] componentsSeparatedByString:@"::"];
+    if ([[retArray objectAtIndex:0] isEqualToString:@"SUCCESS"]) {
+        [self.delegate requestDidFinish:[responseObject objectForKey:@"data"]];
+    } else if ([[retArray objectAtIndex:0] isEqualToString:@"FAIL"]) {
+        NSError *error = [NSError errorWithDomain:MmbMVCErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey:[retArray objectAtIndex:1]}];
+        [self.delegate requestDidFailWithError:error];
+    }
 }
 
 - (void)dealloc {

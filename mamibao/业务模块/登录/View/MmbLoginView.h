@@ -11,7 +11,8 @@
 @protocol MmbLoginViewDelegate <NSObject>
 
 - (void)onClickFindPasswordBtn;
-- (void)onCLickRegisterBtn;
+- (void)onClickRegisterBtn;
+- (void)onClickSubmitBtn;
 
 @end
 

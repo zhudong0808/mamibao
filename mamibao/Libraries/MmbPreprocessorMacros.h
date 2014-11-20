@@ -10,6 +10,7 @@
 #import "MmbMVCConfig.h"
 #import "UIViewAdditions.h"
 #import "MmbViewUtil.h"
+#import "MmbGlobal.h"
 #import "MmbAuthenticateCenter.h"
 
 

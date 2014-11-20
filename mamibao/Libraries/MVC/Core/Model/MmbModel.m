@@ -86,6 +86,7 @@
     self.request.showLogin = [self needManualLogin];
     self.request.delegate = self;
     self.request.usePost = [self isPost];
+    self.request.methodName = [self methodName];
     [self.request initRequestWithBaseURL:urlPath];
     [self.request load];
 }
