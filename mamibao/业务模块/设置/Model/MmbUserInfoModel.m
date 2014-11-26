@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import "MmbSettingModel.h"
+#import "MmbUserInfoModel.h"
 #import "MmbUserInfoItem.h"
 
-@implementation MmbSettingModel
+@implementation MmbUserInfoModel
 
 -(NSDictionary *)dataParams{
     return nil;

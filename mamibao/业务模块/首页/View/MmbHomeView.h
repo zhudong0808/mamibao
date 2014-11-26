@@ -9,7 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "MmbHomeItem.h"
 
+@protocol MmbHomeViewDelegate <NSObject>
+
+- (void)onclickUserInfoView;
+
+@end
+
 @interface MmbHomeView : NSObject
+
+@property (nonatomic, weak) id<MmbHomeViewDelegate> delegate;
+@property (nonatomic,strong) UIImageView *iconView;
+@property (nonatomic,strong) UILabel *userNameLabel;
+@property (nonatomic,strong) UILabel *userDescLabel;
+@property (nonatomic,strong) UIButton *loginBtn;
 
 -(UIView *)getTableHeaderView;
 

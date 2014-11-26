@@ -11,11 +11,17 @@
 		5300C9DC1A1CCD0100272841 /* MmbLoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300C9DB1A1CCD0100272841 /* MmbLoginItem.m */; };
 		5300CA1F1A24757E00272841 /* MmbSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300CA1E1A24757E00272841 /* MmbSettingViewController.m */; };
 		5300CA251A24880800272841 /* MmbSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300CA241A24880800272841 /* MmbSettingView.m */; };
-		5300CA281A24CEC000272841 /* MmbSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300CA271A24CEC000272841 /* MmbSettingModel.m */; };
+		5300CA281A24CEC000272841 /* MmbUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300CA271A24CEC000272841 /* MmbUserInfoModel.m */; };
 		5300CA2B1A24CFDC00272841 /* MmbUserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5300CA2A1A24CFDC00272841 /* MmbUserInfoItem.m */; };
 		530DD14D198735E600F163F7 /* MmbTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DD14C198735E600F163F7 /* MmbTableViewDelegate.m */; };
 		530DD150198771AD00F163F7 /* MmbListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DD14F198771AD00F163F7 /* MmbListModel.m */; };
 		530DD15F1987E2E300F163F7 /* MmbViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DD15E1987E2E300F163F7 /* MmbViewUtil.m */; };
+		531CF05B1A2583C6008AA31A /* MmbMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531CF0551A2583C6008AA31A /* MmbMeViewController.m */; };
+		531CF05C1A2583C6008AA31A /* MmbMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 531CF05A1A2583C6008AA31A /* MmbMeView.m */; };
+		531CF0621A2586E1008AA31A /* jilu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 531CF05E1A2586E1008AA31A /* jilu@2x.png */; };
+		531CF0631A2586E1008AA31A /* shezhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 531CF05F1A2586E1008AA31A /* shezhi@2x.png */; };
+		531CF0641A2586E1008AA31A /* shoucang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 531CF0601A2586E1008AA31A /* shoucang@2x.png */; };
+		531CF0651A2586E1008AA31A /* zhuti@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 531CF0611A2586E1008AA31A /* zhuti@2x.png */; };
 		532777BC19641D9000180420 /* MmbTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 532777BB19641D9000180420 /* MmbTableViewDataSource.m */; };
 		532777BF196422C500180420 /* MmbTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 532777BE196422C500180420 /* MmbTableViewItem.m */; };
 		532777C319642B4A00180420 /* MmbTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532777C219642B4A00180420 /* MmbTableViewCell.m */; };
@@ -86,8 +92,8 @@
 		5300CA1E1A24757E00272841 /* MmbSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbSettingViewController.m; sourceTree = "<group>"; };
 		5300CA231A24880800272841 /* MmbSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbSettingView.h; sourceTree = "<group>"; };
 		5300CA241A24880800272841 /* MmbSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbSettingView.m; sourceTree = "<group>"; };
-		5300CA261A24CEC000272841 /* MmbSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbSettingModel.h; sourceTree = "<group>"; };
-		5300CA271A24CEC000272841 /* MmbSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbSettingModel.m; sourceTree = "<group>"; };
+		5300CA261A24CEC000272841 /* MmbUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbUserInfoModel.h; sourceTree = "<group>"; };
+		5300CA271A24CEC000272841 /* MmbUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbUserInfoModel.m; sourceTree = "<group>"; };
 		5300CA291A24CFDC00272841 /* MmbUserInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbUserInfoItem.h; sourceTree = "<group>"; };
 		5300CA2A1A24CFDC00272841 /* MmbUserInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbUserInfoItem.m; sourceTree = "<group>"; };
 		530DD14B198735E600F163F7 /* MmbTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbTableViewDelegate.h; sourceTree = "<group>"; };
@@ -96,6 +102,14 @@
 		530DD14F198771AD00F163F7 /* MmbListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbListModel.m; sourceTree = "<group>"; };
 		530DD15D1987E2E300F163F7 /* MmbViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbViewUtil.h; sourceTree = "<group>"; };
 		530DD15E1987E2E300F163F7 /* MmbViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbViewUtil.m; sourceTree = "<group>"; };
+		531CF0541A2583C6008AA31A /* MmbMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbMeViewController.h; sourceTree = "<group>"; };
+		531CF0551A2583C6008AA31A /* MmbMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbMeViewController.m; sourceTree = "<group>"; };
+		531CF0591A2583C6008AA31A /* MmbMeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbMeView.h; sourceTree = "<group>"; };
+		531CF05A1A2583C6008AA31A /* MmbMeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbMeView.m; sourceTree = "<group>"; };
+		531CF05E1A2586E1008AA31A /* jilu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jilu@2x.png"; sourceTree = "<group>"; };
+		531CF05F1A2586E1008AA31A /* shezhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shezhi@2x.png"; sourceTree = "<group>"; };
+		531CF0601A2586E1008AA31A /* shoucang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shoucang@2x.png"; sourceTree = "<group>"; };
+		531CF0611A2586E1008AA31A /* zhuti@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhuti@2x.png"; sourceTree = "<group>"; };
 		532777BA19641D9000180420 /* MmbTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbTableViewDataSource.h; sourceTree = "<group>"; };
 		532777BB19641D9000180420 /* MmbTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MmbTableViewDataSource.m; sourceTree = "<group>"; };
 		532777BD196422C500180420 /* MmbTableViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MmbTableViewItem.h; sourceTree = "<group>"; };
@@ -259,8 +273,8 @@
 		5300CA211A2487D500272841 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5300CA261A24CEC000272841 /* MmbSettingModel.h */,
-				5300CA271A24CEC000272841 /* MmbSettingModel.m */,
+				5300CA261A24CEC000272841 /* MmbUserInfoModel.h */,
+				5300CA271A24CEC000272841 /* MmbUserInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +304,61 @@
 				530DD15E1987E2E300F163F7 /* MmbViewUtil.m */,
 			);
 			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		531CF0521A2583C6008AA31A /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+				531CF05D1A2586E1008AA31A /* Resources */,
+				531CF0531A2583C6008AA31A /* Controller */,
+				531CF0561A2583C6008AA31A /* Item */,
+				531CF0571A2583C6008AA31A /* Model */,
+				531CF0581A2583C6008AA31A /* View */,
+			);
+			path = "我";
+			sourceTree = "<group>";
+		};
+		531CF0531A2583C6008AA31A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				531CF0541A2583C6008AA31A /* MmbMeViewController.h */,
+				531CF0551A2583C6008AA31A /* MmbMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		531CF0561A2583C6008AA31A /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		531CF0571A2583C6008AA31A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		531CF0581A2583C6008AA31A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				531CF0591A2583C6008AA31A /* MmbMeView.h */,
+				531CF05A1A2583C6008AA31A /* MmbMeView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		531CF05D1A2586E1008AA31A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				531CF05E1A2586E1008AA31A /* jilu@2x.png */,
+				531CF05F1A2586E1008AA31A /* shezhi@2x.png */,
+				531CF0601A2586E1008AA31A /* shoucang@2x.png */,
+				531CF0611A2586E1008AA31A /* zhuti@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		532777B919641D5800180420 /* DataSource */ = {
@@ -452,6 +521,7 @@
 		53A75A3C1962DBB500862634 /* 业务模块 */ = {
 			isa = PBXGroup;
 			children = (
+				531CF0521A2583C6008AA31A /* 我 */,
 				5300CA1B1A24752E00272841 /* 设置 */,
 				53F4DC4919DAD0A200B73AE9 /* 登录 */,
 				53B86AF21987FA67009EF2C9 /* 首页 */,
@@ -774,11 +844,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				531CF0621A2586E1008AA31A /* jilu@2x.png in Resources */,
 				539143431955E6CE004555A2 /* Images.xcassets in Resources */,
 				5398AA9B19AA1B6D00C1066F /* zhuanjia@2x.png in Resources */,
 				5398AA9A19AA1B6D00C1066F /* zhishi@2x.png in Resources */,
+				531CF0641A2586E1008AA31A /* shoucang@2x.png in Resources */,
+				531CF0631A2586E1008AA31A /* shezhi@2x.png in Resources */,
 				5398AA9C19AA1B6D00C1066F /* chengzhang@2x.png in Resources */,
 				5398AA9919AA1B6D00C1066F /* jiaoliu@2x.png in Resources */,
+				531CF0651A2586E1008AA31A /* zhuti@2x.png in Resources */,
 				53B86AFF1988A27E009EF2C9 /* defaultIcon@2x.png in Resources */,
 				539143351955E6CE004555A2 /* InfoPlist.strings in Resources */,
 				5391433E1955E6CE004555A2 /* Main.storyboard in Resources */,
@@ -853,11 +927,13 @@
 				53B86AEC1987FA45009EF2C9 /* MmbIndexViewController.m in Sources */,
 				5393EE5F196679A900C6210C /* MmbAFRequest.m in Sources */,
 				5393EE5519654D9000C6210C /* MmbRequest.m in Sources */,
+				531CF05C1A2583C6008AA31A /* MmbMeView.m in Sources */,
 				53AAF5501A14FD410020F2DE /* MmbLoginView.m in Sources */,
 				53B86AF11987FA45009EF2C9 /* MmbIndexTableViewCell.m in Sources */,
 				5300CA1F1A24757E00272841 /* MmbSettingViewController.m in Sources */,
 				532777C7196451D900180420 /* MmbModel.m in Sources */,
 				5346ED7F19699E3E000FAAFE /* MmbStatusInfo.m in Sources */,
+				531CF05B1A2583C6008AA31A /* MmbMeViewController.m in Sources */,
 				5391433B1955E6CE004555A2 /* MmbAppDelegate.m in Sources */,
 				5393EE6619692AAF00C6210C /* MmbTableViewController.m in Sources */,
 				5300CA2B1A24CFDC00272841 /* MmbUserInfoItem.m in Sources */,
@@ -872,7 +948,7 @@
 				53D9A04619C1A3360057E18F /* MmbHomeItem.m in Sources */,
 				53A75A471962DC4B00862634 /* MmbItem.m in Sources */,
 				53B86AF01987FA45009EF2C9 /* MmbIndexModel.m in Sources */,
-				5300CA281A24CEC000272841 /* MmbSettingModel.m in Sources */,
+				5300CA281A24CEC000272841 /* MmbUserInfoModel.m in Sources */,
 				5300C9D91A1CCCE400272841 /* MmbLoginModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

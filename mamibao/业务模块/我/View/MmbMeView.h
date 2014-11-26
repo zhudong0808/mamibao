@@ -9,18 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "MmbUserInfoItem.h"
 
-@protocol MmbSettingViewDelegate <NSObject>
+@protocol MmbMeViewDelegate <NSObject>
 
-- (void)onclickUserInfoBtn;
+- (void)onClickLoginoutBtn;
+- (void)onClickUserInfoBtn;
 
 @end
 
-@interface MmbSettingView : NSObject
+@interface MmbMeView : NSObject
 
-@property (nonatomic, weak) id<MmbSettingViewDelegate> delegate;
+@property (nonatomic, weak) id<MmbMeViewDelegate> delegate;
+
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *userNameLabel;
 @property (nonatomic, strong) UILabel *userDescLabel;
+@property (nonatomic, strong) UIButton *loginoutBtn;
 @property (nonatomic, strong) UIButton *loginBtn;
 
 - (UIView *)getTableHeaderView;

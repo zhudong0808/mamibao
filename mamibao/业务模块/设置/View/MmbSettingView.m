@@ -15,9 +15,6 @@
 
 }
 
-@property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UILabel *userNameLabel;
-@property (nonatomic, strong) UILabel *userDescLabel;
 @property (nonatomic, strong) UISwitch *messageSwitch;
 
 @end
@@ -31,7 +28,7 @@
     UIButton *userInfoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     userInfoBtn.frame = CGRectMake(0, kCellPitch, APP_CONTENT_WIDTH, 80);
     userInfoBtn.backgroundColor = [UIColor whiteColor];
-    
+    [userInfoBtn addTarget:self action:@selector(onclickUserInfoBtn) forControlEvents:UIControlEventTouchUpInside];
     [containerView addSubview:userInfoBtn];
     
     [MmbViewUtil drawLine:CGRectMake(0, 0, APP_CONTENT_WIDTH, 0.5) onView:userInfoBtn color:HEXCOLOR(0xdddddd)];
@@ -50,9 +47,24 @@
     _userDescLabel.numberOfLines = 2;
     [userInfoBtn addSubview:_userDescLabel];
     
+    //登录按钮
+    _loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(_iconView.right+15, _iconView.top + (60/2-30/2), 90, 30)];
+    _loginBtn.backgroundColor = [UIColor clearColor];
+    _loginBtn.layer.borderColor = HEXCOLOR(0xe33125).CGColor;
+    _loginBtn.layer.borderWidth = 1;
+    _loginBtn.layer.cornerRadius = 2;
+    _loginBtn.hidden = YES;
+    [_loginBtn addTarget:self action:@selector(onclickUserInfoBtn) forControlEvents:UIControlEventTouchUpInside];
+    [userInfoBtn addSubview:_loginBtn];
+    
+    UILabel *loginBtnLabel = [MmbViewUtil simpleLabel:CGRectMake(90/2-60/2, 30/2-14/2, 60, 14) f:14 tc:HEXCOLOR(0xe33125) t:@"立即登录"];
+    loginBtnLabel.textAlignment = NSTextAlignmentCenter;
+    loginBtnLabel.backgroundColor = [UIColor clearColor];
+    [_loginBtn addSubview:loginBtnLabel];
+    
     //箭头图标
     UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
-    arrowImageView.frame = CGRectMake(APP_CONTENT_WIDTH-32, 90/2-18/2, 18, 18);
+    arrowImageView.frame = CGRectMake(APP_CONTENT_WIDTH-32, 90/2-18/2-2, 18, 18);
     [userInfoBtn addSubview:arrowImageView];
     
     [MmbViewUtil drawLine:CGRectMake(0, 80-0.5, APP_CONTENT_WIDTH, 0.5) onView:userInfoBtn color:HEXCOLOR(0xdddddd)];
@@ -107,6 +119,14 @@
         _messageSwitch.on = YES;
     } else {
         _messageSwitch.on = NO;
+    }
+    _loginBtn.hidden = YES;
+    
+}
+
+- (void)onclickUserInfoBtn {
+    if ([self.delegate respondsToSelector:@selector(onclickUserInfoBtn)]) {
+        [self.delegate onclickUserInfoBtn];
     }
 }
 

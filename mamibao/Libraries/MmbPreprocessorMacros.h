@@ -37,6 +37,7 @@ alpha:(a)]
 #define keyChainServiceName   @"keyChainServiceName"
 
 #define kNotificationUserLoggedIn    @"NOTIFICATION_USER_LOGGED_IN"
+#define kNotificationUserLoggedOut   @"NOTIFICATION_USER_LOGGED_OUT"
 
 
 #define ifDebug @"1"

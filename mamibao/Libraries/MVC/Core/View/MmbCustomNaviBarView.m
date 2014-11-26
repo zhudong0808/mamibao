@@ -80,7 +80,7 @@
 
 -(void)setDefaultLeftBarItem{
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(5, isIOS7?33:13, 50, 18);
+    backBtn.frame = CGRectMake(5, isIOS7?20:0, 50, 40);
     [backBtn setTitle:@"返回" forState:UIControlStateNormal];
     [backBtn.titleLabel setFont:[UIFont systemFontOfSize:18]];
     [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];

@@ -7,11 +7,12 @@
 //
 
 #import "MmbHomeViewController.h"
-#import "MmbHomeView.h"
 #import "MmbHomeModel.h"
 #import "MmbhomeItem.h"
 #import "SFHFKeychainUtils.h"
 #import "MmbSettingViewController.h"
+#import "MmbMeView.h"
+#import "MmbMeViewController.h"
 
 @interface MmbHomeViewController ()
 
@@ -26,6 +27,7 @@
 - (id)init {
     if (self = [super init]) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:kNotificationUserLoggedIn object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLoginOut) name:kNotificationUserLoggedOut object:nil];
     }
     return self;
 }
@@ -38,6 +40,11 @@
     [self setContainerView];
     [self registerModel:self.homeModel];
     [self loadData];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 
@@ -88,6 +95,18 @@
     [self.navigationController pushViewController:settingVC animated:YES];
 }
 
+- (void)gotoMeVC {
+    MmbMeViewController *meVC = [[MmbMeViewController alloc] init];
+    [self.navigationController pushViewController:meVC animated:YES];
+}
+
+- (void)doLoginOut {
+    [self.homeView.iconView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"defaultIcon.png"]];
+    self.homeView.userNameLabel.text = @"";
+    self.homeView.userDescLabel.text = @"";
+    self.homeView.loginBtn.hidden = NO;
+}
+
 
 #pragma mark - MmbViewController(SubClassing)
 - (void)didLoadModel:(MmbModel*)model{//不需要调用父类的方法进行数据绑定，所以此处重定义
@@ -128,13 +147,24 @@
 -(MmbHomeView *)homeView{
     if (!_homeView) {
         _homeView = [[MmbHomeView alloc] init];
+        _homeView.delegate = self;
     }
     return _homeView;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+#pragma mark - delegate
+- (void)onclickUserInfoView {
+    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
+        [self gotoMeVC];
+    } else {
+        [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+            if (success == YES) {
+                [self gotoMeVC];
+            }
+        }];
+    }
 }
+
+
 
 @end

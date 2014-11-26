@@ -15,9 +15,6 @@
 
 @property (nonatomic,strong) UIView *tableHeaderView;
 @property (nonatomic,strong) UIView *tableFooterView;
-@property (nonatomic,strong) UIImageView *iconView;
-@property (nonatomic,strong) UILabel *userNameLabel;
-@property (nonatomic,strong) UILabel *userDescLabel;
 @property (nonatomic,strong) UIButton *zhishiView;
 @property (nonatomic,strong) UIButton *zhuanjiaView;
 @property (nonatomic,strong) UIButton *chengzhangView;
@@ -32,8 +29,10 @@
         _tableHeaderView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, APP_CONTENT_WIDTH, 90)];
         _tableHeaderView.backgroundColor = [UIColor clearColor];
         [MmbViewUtil drawLine:CGRectMake(0, 10-0.5, APP_CONTENT_WIDTH, 0.5) onView:_tableHeaderView color:RGBCOLOR(0xdd, 0xdd, 0xdd)];
-        UIView *userInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, APP_CONTENT_WIDTH, 80)];
+        UIButton *userInfoView = [UIButton buttonWithType:UIButtonTypeCustom];
+        userInfoView.frame = CGRectMake(0, 10, APP_CONTENT_WIDTH, 80);
         userInfoView.backgroundColor = [UIColor whiteColor];
+        [userInfoView addTarget:self action:@selector(onclickUserInfoView) forControlEvents:UIControlEventTouchUpInside];
         [_tableHeaderView addSubview:userInfoView];
         
         
@@ -43,17 +42,31 @@
         [userInfoView addSubview:_iconView];
         
         //用户名称
-        _userNameLabel = [MmbViewUtil simpleLabel:CGRectMake(_iconView.right+10, 15, 200, 20) f:15 tc:RGBCOLOR(0x00, 0x00, 0x00) t:@"小宝君"];
+        _userNameLabel = [MmbViewUtil simpleLabel:CGRectMake(_iconView.right+10, 15, 200, 20) f:15 tc:RGBCOLOR(0x00, 0x00, 0x00) t:@""];
         [userInfoView addSubview:_userNameLabel];
         
         //用户描述
-        _userDescLabel = [MmbViewUtil simpleLabel:CGRectMake(_userNameLabel.left, _userNameLabel.bottom+5, 200, 30) f:12 tc:RGBCOLOR(0x99, 0x99, 0x99) t:@"我的人生目标是捡很多很多很多肥皂成为人类的肥皂大师"];
+        _userDescLabel = [MmbViewUtil simpleLabel:CGRectMake(_userNameLabel.left, _userNameLabel.bottom+5, 200, 30) f:12 tc:RGBCOLOR(0x99, 0x99, 0x99) t:@""];
         _userDescLabel.numberOfLines = 2;
         [userInfoView addSubview:_userDescLabel];
         
+        //登录按钮
+        _loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(_iconView.right+15, _iconView.top + (60/2-30/2), 90, 30)];
+        _loginBtn.backgroundColor = [UIColor clearColor];
+        _loginBtn.layer.borderColor = HEXCOLOR(0xe33125).CGColor;
+        _loginBtn.layer.borderWidth = 1;
+        _loginBtn.layer.cornerRadius = 2;
+        [_loginBtn addTarget:self action:@selector(onclickUserInfoView) forControlEvents:UIControlEventTouchUpInside];
+        [userInfoView addSubview:_loginBtn];
+        
+        UILabel *loginBtnLabel = [MmbViewUtil simpleLabel:CGRectMake(90/2-60/2, 30/2-14/2, 60, 14) f:14 tc:HEXCOLOR(0xe33125) t:@"立即登录"];
+        loginBtnLabel.textAlignment = NSTextAlignmentCenter;
+        loginBtnLabel.backgroundColor = [UIColor clearColor];
+        [_loginBtn addSubview:loginBtnLabel];
+        
         //箭头图标
         UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
-        arrowImageView.frame = CGRectMake(APP_CONTENT_WIDTH-32, 90/2-18/2, 18, 18);
+        arrowImageView.frame = CGRectMake(APP_CONTENT_WIDTH-32, 90/2-18/2-2, 18, 18);
         [userInfoView addSubview:arrowImageView];
         
         [MmbViewUtil drawLine:CGRectMake(0, 80-0.5, APP_CONTENT_WIDTH, 0.5) onView:userInfoView color:RGBCOLOR(0xdd, 0xdd, 0xdd)];
@@ -172,6 +185,13 @@
     [_iconView sd_setImageWithURL:[NSURL URLWithString:homeItem.iconUrl] placeholderImage:[UIImage imageNamed:@"defaultIcon.png"]];
     _userNameLabel.text = homeItem.username;
     _userDescLabel.text = homeItem.desc;
+    _loginBtn.hidden = YES;
+}
+
+- (void)onclickUserInfoView {
+    if ([self.delegate respondsToSelector:@selector(onclickUserInfoView)]) {
+        [self.delegate onclickUserInfoView];
+    }
 }
 
 

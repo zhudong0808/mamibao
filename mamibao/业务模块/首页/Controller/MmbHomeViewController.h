@@ -7,7 +7,8 @@
 //
 
 #import "MmbTableViewController.h"
+#import "MmbHomeView.h"
 
-@interface MmbHomeViewController : MmbTableViewController
+@interface MmbHomeViewController : MmbTableViewController<MmbHomeViewDelegate>
 
 @end

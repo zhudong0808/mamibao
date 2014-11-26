@@ -7,8 +7,8 @@
 //
 
 #import "MmbViewController.h"
-#import "MmbSettingView.h"
+#import "MmbMeView.h"
 
-@interface MmbSettingViewController : MmbViewController<MmbSettingViewDelegate>
+@interface MmbMeViewController : MmbViewController<MmbMeViewDelegate>
 
 @end

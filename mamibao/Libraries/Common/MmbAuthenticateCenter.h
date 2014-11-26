@@ -38,4 +38,9 @@
  *  @param completion 回调处理内容
  */
 - (void)authenticateWithCompletion:(MmbLoginCompletion)completion;
+
+/**
+ *  清空sid
+ */
+- (void)clearAllSession;
 @end

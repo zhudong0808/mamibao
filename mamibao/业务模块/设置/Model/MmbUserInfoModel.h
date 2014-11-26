@@ -8,6 +8,6 @@
 
 #import "MmbModel.h"
 
-@interface MmbSettingModel : MmbModel
+@interface MmbUserInfoModel : MmbModel
 
 @end

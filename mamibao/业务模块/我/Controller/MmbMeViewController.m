@@ -6,25 +6,23 @@
 //  Copyright (c) 2014年 mamibao. All rights reserved.
 //
 
-#import "MmbSettingViewController.h"
+#import "MmbMeViewController.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "MmbUserInfoModel.h"
 #import "MmbUserInfoItem.h"
-#import "MmbMeViewController.h"
 
-@interface MmbSettingViewController ()
+@interface MmbMeViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) MmbSettingView *settingView;
+@property (nonatomic, strong) MmbMeView *meView;
 @property (nonatomic, strong) MmbUserInfoModel *userInfoModel;
 
 @end
 
-@implementation MmbSettingViewController
+@implementation MmbMeViewController
 
 - (id)init {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(load) name:kNotificationUserLoggedIn object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doLoginOut) name:kNotificationUserLoggedOut object:nil];
     }
     return self;
@@ -40,7 +38,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -54,7 +51,7 @@
     [self.tableView.pullToRefreshView stopAnimating];
     [super showModel:model];
     MmbUserInfoItem *item = [model.itemList objectAtIndex:0];
-    [self.settingView updateViewWithItem:item];
+    [self.meView updateViewWithItem:item];
 }
 
 - (void)showLoading:(MmbModel *)model{
@@ -70,7 +67,7 @@
 
 #pragma mark - private method
 - (void)setNaviView {
-    self.naviBar.centerBarItem = [MmbViewUtil simpleLabel:CGRectMake(0, 0, 100, kNaviBarHeight) bf:24 tc:[UIColor whiteColor] t:@"设置"];
+    self.naviBar.centerBarItem = [MmbViewUtil simpleLabel:CGRectMake(0, 0, 100, kNaviBarHeight) bf:24 tc:[UIColor whiteColor] t:@"我"];
 }
 
 - (void)setContainerView {
@@ -83,15 +80,15 @@
     }];
     [self.view addSubview:_tableView];
     
-    _tableView.tableHeaderView = [self.settingView getTableHeaderView];
+    _tableView.tableHeaderView = [self.meView getTableHeaderView];
 }
 
-- (MmbSettingView *)settingView {
-    if (!_settingView) {
-        _settingView = [[MmbSettingView alloc] init];
-        _settingView.delegate = self;
+- (MmbMeView *)meView {
+    if (!_meView) {
+        _meView = [[MmbMeView alloc] init];
+        _meView.delegate = self;
     }
-    return _settingView;
+    return _meView;
 }
 
 - (MmbUserInfoModel *)userInfoModel {
@@ -102,29 +99,32 @@
     return _userInfoModel;
 }
 
-- (void)gotoMeVC {
-    MmbMeViewController *meVC = [[MmbMeViewController alloc] init];
-    [self.navigationController pushViewController:meVC animated:YES];
+#pragma mark - delegate
+- (void)onClickLoginoutBtn {
+    [[MmbAuthenticateCenter shareInstance] clearAllSession];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedOut object:nil];
+    [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+        if (success == YES) {
+            [self load];
+        }
+    }];
 }
 
-#pragma mark - delegate
-- (void)onclickUserInfoBtn {
-    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
-        [self gotoMeVC];
-    } else {
-        [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
-            if (success == YES) {
-                [self gotoMeVC];
-            }
-        }];
-    }
+- (void)onClickUserInfoBtn {
+    [[MmbAuthenticateCenter shareInstance] clearAllSession];
+    [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+        if (success == YES) {
+            [self load];
+        }
+    }];
 }
 
 - (void)doLoginOut {
-    [self.settingView.iconView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"defaultIcon.png"]];
-    self.settingView.userNameLabel.text = @"";
-    self.settingView.userDescLabel.text = @"";
-    self.settingView.loginBtn.hidden = NO;
+    [self.meView.iconView sd_setImageWithURL:[NSURL URLWithString:nil] placeholderImage:[UIImage imageNamed:@"defaultIcon.png"]];
+    self.meView.userNameLabel.text = @"";
+    self.meView.userDescLabel.text = @"";
+    self.meView.loginoutBtn.hidden = YES;
+    self.meView.loginBtn.hidden = NO;
 }
 
 /*
