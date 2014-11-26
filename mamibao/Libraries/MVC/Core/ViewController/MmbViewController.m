@@ -92,7 +92,12 @@
 }
 
 - (BOOL)canShowModel:(MmbModel*)model{
-    return YES;
+    if ([_modelDictInternal.allKeys containsObject:model.key]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 - (void)showEmpty:(MmbModel *)model{
@@ -123,7 +128,7 @@
 
 #pragma makr - MmbCustomNaviBarViewDelegate
 -(void)backAction:(id)sender{
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

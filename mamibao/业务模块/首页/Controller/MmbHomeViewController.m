@@ -11,6 +11,7 @@
 #import "MmbHomeModel.h"
 #import "MmbhomeItem.h"
 #import "SFHFKeychainUtils.h"
+#import "MmbSettingViewController.h"
 
 @interface MmbHomeViewController ()
 
@@ -20,6 +21,14 @@
 @end
 
 @implementation MmbHomeViewController
+
+
+- (id)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:kNotificationUserLoggedIn object:nil];
+    }
+    return self;
+}
 
 
 - (void)viewDidLoad
@@ -32,17 +41,18 @@
 }
 
 
--(void)setNaviView{
+- (void)setNaviView {
+    self.naviBar.leftBarItem = nil;
     self.naviBar.centerBarItem = [MmbViewUtil simpleLabel:CGRectMake(0, 0, 100, 44) bf:24 tc:[UIColor whiteColor] t:@"XXX"];
     UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     settingBtn.frame = CGRectMake(0, 0, 32, 44);
     [settingBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
-    [settingBtn addTarget:self action:@selector(settingAction) forControlEvents:UIControlEventTouchUpInside];
+    [settingBtn addTarget:self action:@selector(onClickSettingBtn) forControlEvents:UIControlEventTouchUpInside];
     [settingBtn setTitle:@"设置" forState:UIControlStateNormal];
     self.naviBar.rightBarItem = settingBtn;
 }
 
--(void)setContainerView{
+- (void)setContainerView {
     self.tableView.frame = CGRectMake(0, self.naviBar.bottom, APP_CONTENT_WIDTH, APP_CONTENT_HEIGHT-44);
     self.tableView.backgroundColor = [UIColor clearColor];
     self.bNeedPullRefresh = YES;
@@ -53,31 +63,42 @@
    
 }
 
--(void)loadData{
-    [SFHFKeychainUtils deleteItemForUsername:keyChainEncryptString andServiceName:keyChainServiceName error:nil];
-
-//    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
+- (void)loadData {    
+    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
         [self load];
-//    }
+    }
 }
 
-
-
-
--(void)settingAction{
+#pragma mark - private methods
+- (void)onClickSettingBtn {
+    if ([[MmbAuthenticateCenter shareInstance] isLogin]) {
+        [self gotoSettingVC];
+    } else {
+        [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+            if (success == YES) {
+                [self gotoSettingVC];
+            }
+        }];
+    }
     
+}
+
+- (void)gotoSettingVC {
+    MmbSettingViewController *settingVC = [[MmbSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 
 #pragma mark - MmbViewController(SubClassing)
-- (void)didLoadModel:(MmbModel*)model{
+- (void)didLoadModel:(MmbModel*)model{//不需要调用父类的方法进行数据绑定，所以此处重定义
 }
 
-- (BOOL)canShowModel:(MmbModel*)model{
+- (BOOL)canShowModel:(MmbModel*)model{//不需要调用父类的方法进行section等的校验，所以此处重定义
     return YES;
 }
 
 - (void)showEmpty:(MmbModel *)model{
+    [super showEmpty:model];
 }
 
 - (void)showModel:(MmbModel *)model{
@@ -87,12 +108,12 @@
     [self.homeView updateViewWithItem:item];
 }
 
-- (void)showLoading:(MmbModel *)model{
-    
+- (void)showLoading:(MmbModel *)model{//因为页面的显示内容非必须，所以不需要loading的页面
+    [super showLoading:model];
 }
 
 - (void)showError:(NSError *)error withModel:(MmbModel*)model{
-    
+    [super showError:error withModel:model];
 }
 
 #pragma mark - model init

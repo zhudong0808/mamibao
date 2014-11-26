@@ -51,7 +51,7 @@
     self.afClient = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:API_URL]];
     
     //登录操作
-    if (self.useAuth && self.showLogin) {
+    if (self.useAuth && self.showLogin && [[MmbAuthenticateCenter shareInstance] isLogin] == NO) {
         [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
             if (success == YES) {
                 [self load];

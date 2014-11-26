@@ -11,6 +11,8 @@
 #import "MmbStatusHandler.h"
 #import "MmbCustomNaviBarView.h"
 
+#define kNaviBarHeight 44
+
 @interface MmbViewController : UIViewController<MmbModelDelegate,MmbStatusDelegate,MmbCustomNaviBarViewDelegate>
 
 /**

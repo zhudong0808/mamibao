@@ -39,7 +39,8 @@
 }
 
 -(void)reload{
-    
+    [self cancel];
+    [self load];
 }
 
 

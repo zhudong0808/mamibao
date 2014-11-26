@@ -169,6 +169,7 @@
 }
 
 -(void)updateViewWithItem:(MmbHomeItem *)homeItem{
+    [_iconView sd_setImageWithURL:[NSURL URLWithString:homeItem.iconUrl] placeholderImage:[UIImage imageNamed:@"defaultIcon.png"]];
     _userNameLabel.text = homeItem.username;
     _userDescLabel.text = homeItem.desc;
 }

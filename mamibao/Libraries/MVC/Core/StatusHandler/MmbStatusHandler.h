@@ -31,5 +31,5 @@
 - (id)initWithStatusInfo:(MmbStatusInfo *)statusInfo delegate:(id<MmbStatusDelegate>)delegate;
 - (void)removeStatusViewFromView:(UIView *)view;
 - (void)showLoadingViewInView:(UIView *)parentView frame:(CGRect)frame;
-
+- (UIView *)showViewforError:(NSError *)error inView:(UIView *)parentView frame:(CGRect)frame;
 @end

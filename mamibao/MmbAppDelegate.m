@@ -15,9 +15,13 @@
 {
     // Override point for customization after application launch.
     
+    
     MmbHomeViewController *homeVc = [[MmbHomeViewController alloc] init];
     
-    self.window.rootViewController = homeVc;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:homeVc];
+    nvc.navigationBarHidden = YES;
+    
+    self.window.rootViewController = nvc;
     
     return YES;
 }

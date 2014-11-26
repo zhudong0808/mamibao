@@ -54,6 +54,8 @@
     [SFHFKeychainUtils storeUsername:keyChainEncryptString andPassword:loginItem.sid forServiceName:keyChainServiceName updateExisting:YES error:nil];
     [MmbGlobal showProgressHUD:@"登录成功" duration:1.0];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedIn object:nil];
+    
     if (self.loginCompletion) {
         self.loginCompletion(YES);
     }

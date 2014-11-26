@@ -42,6 +42,28 @@
     [parentView addSubview:view];
     return;
 }
+//
+//- (UIView *)showViewforError:(NSError *)error inView:(UIView *)parentView frame:(CGRect)frame {
+//    if(error && [error isKindOfClass:[TBErrorResponse class]]) {
+//        TBErrorResponse *tbError = (TBErrorResponse *)error;
+//        if ([tbError isInvalidSIDError]) {
+//            return nil;
+//        }
+//    }
+//    
+//    return [self showViewforError:error inView:parentView frame:frame actionTarget:self.delegate actionSelector:[self.delegate selectorForError:error]];
+//}
+//
+//
+//- (UIView *)showViewforError:(NSError *)error inView:(UIView *)parentView frame:(CGRect)frame actionTarget:(id)actionTarget actionSelector:(SEL)actionSelector {
+//    UIView *errorView = [parentView viewWithTag:kErrorViewTag];
+//    [errorView removeFromSuperview];
+//    
+//    UIView* view = [self errorViewWithFrame:frame error:error actionTarget:actionTarget actionSelector:actionSelector];
+//    view.tag = kErrorViewTag;
+//    [parentView addSubview:view];
+//    return view;
+//}
 
 
 #pragma mark - private methods
@@ -96,6 +118,47 @@
     
     return contentView;
 }
+
+//- (UIView *)errorViewWithFrame:(CGRect)frame error:(NSError *)error actionTarget:(id)actionTarget actionSelector:(SEL)actionSelector {
+//    
+//    NSString* title = @"";
+//    NSString* subtitle = @"";
+//    UIImage* image = nil;
+//    NSString* btnTitle = @"";
+//    
+//    title = [self.errorInfo titleForError:error];
+//    subtitle = [self.errorInfo subTitleForError:error];
+//    image = [self.errorInfo imageForError:error];
+//    btnTitle = [self.errorInfo actionButtonTitleForError:error];
+//    //////////////////////////////////////////////////////////////////////////////////////////////////////
+//    
+//    
+//    if (title.length || subtitle.length || image) {
+//        TBCityErrorView * aErrorView;
+//        if (self.selectorForErrorBlock!=0) {
+//            aErrorView = [[TBCityErrorView alloc] initWithImage:image
+//                                                          title:title
+//                                                       subtitle:subtitle
+//                                              actionButtonTitle:btnTitle
+//                                                         target:self
+//                                                       selector:@selector(selectorForError:)];
+//        } else{
+//            
+//            aErrorView = [[TBCityErrorView alloc] initWithImage:image
+//                                                          title:title
+//                                                       subtitle:subtitle
+//                                              actionButtonTitle:btnTitle
+//                                                         target:actionTarget
+//                                                       selector:actionSelector];
+//        }
+//        
+//        aErrorView.backgroundColor = [UIColor colorWithWhite:245/255.0f alpha:1.0f];
+//        aErrorView.frame = frame;
+//        return aErrorView;
+//    }
+//    return nil;
+//}
+
 
 
 @end

@@ -12,6 +12,7 @@
 #import "MmbViewUtil.h"
 #import "MmbGlobal.h"
 #import "MmbAuthenticateCenter.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 // 系统设置相关
@@ -34,5 +35,8 @@ alpha:(a)]
 
 #define keyChainEncryptString @"keyChainEncryptString"
 #define keyChainServiceName   @"keyChainServiceName"
+
+#define kNotificationUserLoggedIn    @"NOTIFICATION_USER_LOGGED_IN"
+
 
 #define ifDebug @"1"
