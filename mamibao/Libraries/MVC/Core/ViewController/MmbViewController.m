@@ -113,7 +113,6 @@
 }
 
 - (void)showError:(NSError *)error withModel:(MmbModel*)model{
-    
     [self.statusHandler removeStatusViewFromView:self.view];
 }
 
@@ -130,9 +129,6 @@
 -(void)backAction:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
-
 
 - (void)didReceiveMemoryWarning
 {

@@ -7,7 +7,6 @@
 //
 
 #import "MmbTableViewDataSource.h"
-#import "MmbTableViewItem.h"
 #import "MmbTableViewCell.h"
 
 @interface MmbTableViewDataSource(){
@@ -30,6 +29,10 @@
 }
 
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 0;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray *items = _itemsForSectionInternal[@(section)];
@@ -54,7 +57,7 @@
 }
 
 
-#pragma mark - private method 
+
 // item for index
 - (MmbTableViewItem *)itemForCellAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *items = _itemsForSectionInternal[@(indexPath.section)];
@@ -66,7 +69,6 @@
     }
     return item;
 }
-
 
 // cell for index
 - (Class)cellClassForItem:(MmbTableViewItem*)item AtIndex:(NSIndexPath *)indexPath
@@ -98,11 +100,11 @@
 #pragma mark - public method
 -(void)removeAllItems{
     [_itemsForSectionInternal removeAllObjects];
-    _itemsForSectionInternal = nil;
 }
 
 -(void)tableViewControllerDidLoadModel:(MmbListModel *)model ForSection:(NSInteger)section{
-    [_itemsForSectionInternal setObject:model.itemList.array forKey:@(section)];
+    NSMutableArray *items = [model.itemList.array mutableCopy];
+    [_itemsForSectionInternal setObject:items forKey:@(section)];
 }
 
 @end

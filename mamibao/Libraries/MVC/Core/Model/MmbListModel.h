@@ -12,8 +12,25 @@
 
 
 /**
- *  标识model对应的section
+ *  是否有更多
  */
-@property (nonatomic,assign) NSInteger section;
+@property (nonatomic, readonly) BOOL hasMore;
+
+
+/**
+ * 分页当前页数
+ */
+@property(nonatomic, assign) NSInteger currentPageIndex;
+
+/**
+ *  分页个数，默认20
+ */
+@property(nonatomic, assign) NSInteger pageSize;
+
+/**
+ *  对应的section
+ */
+@property(nonatomic, assign) NSInteger sectionNumber;
+
 
 @end

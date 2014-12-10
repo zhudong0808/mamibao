@@ -31,11 +31,18 @@ typedef NS_ENUM(int, MmbTableViewItemType)
     kItem_Customize = 3
 };
 
-@interface MmbTableViewItem : MmbItem
+@interface MmbTableViewItem : MmbItem<NSCoding>
 
 /**
  *  item的类型
  */
 @property (nonatomic,assign) MmbTableViewItemType itemType;
+
+
+/**
+ *  @optional
+ *  item的高度，建议在model请求完成后赋值
+ */
+@property (nonatomic,assign) CGFloat itemHeight;
 
 @end

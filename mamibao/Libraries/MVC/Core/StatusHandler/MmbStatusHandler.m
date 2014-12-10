@@ -7,6 +7,7 @@
 //
 
 #import "MmbStatusHandler.h"
+#import "MmbErrorView.h"
 
 #define kErrorViewTag           12306
 #define kEmptyViewTag           12307
@@ -42,6 +43,16 @@
     [parentView addSubview:view];
     return;
 }
+
+- (UIView *)showEmptyViewInView:(UIView *)parentView frame:(CGRect)frame {
+    UIView* emptyView = [parentView viewWithTag:kEmptyViewTag];
+    [emptyView removeFromSuperview];
+    
+    UIView* view = [self emptyViewWithFrame:frame];
+    view.tag = kEmptyViewTag;
+    [parentView addSubview:view];
+    return view;
+}
 //
 //- (UIView *)showViewforError:(NSError *)error inView:(UIView *)parentView frame:(CGRect)frame {
 //    if(error && [error isKindOfClass:[TBErrorResponse class]]) {
@@ -65,6 +76,13 @@
 //    return view;
 //}
 
+
+- (MmbStatusInfo *)errorInfo {
+    if (!_statusInfo) {
+        _statusInfo = [[MmbStatusInfo alloc] init];
+    }
+    return _statusInfo;
+}
 
 #pragma mark - private methods
 - (void)hideLoadingView {
@@ -118,6 +136,55 @@
     
     return contentView;
 }
+
+- (UIView *)emptyViewWithFrame:(CGRect)frame {
+    NSString* title = [self.errorInfo titleForEmpty];
+    NSString* subtitle = [self.errorInfo subTitleForEmpty];
+    UIImage* image = [self.errorInfo imageForEmpty];
+    NSString *btnTitle = [self.errorInfo actionButtonTitleForEmpty];
+    if (title.length || subtitle.length || image) {
+        
+        MmbErrorView * aErrorView;
+        //handle empty block first, if it exists.
+        if (self.selectorForEmptyBlock!=0) {
+            aErrorView = [[MmbErrorView alloc] initWithImage:image
+                                                          title:title
+                                                       subtitle:subtitle
+                                              actionButtonTitle:btnTitle
+                                                         target:self
+                                                       selector:@selector(selectorForEmpty)];
+        } else{
+            
+            //if delegate is not nil, and it implement selectorForEmpty method
+            if ([self.delegate respondsToSelector:@selector(selectorForEmpty)]) {
+                aErrorView = [[MmbErrorView alloc] initWithImage:image
+                                                              title:title
+                                                           subtitle:subtitle
+                                                  actionButtonTitle:btnTitle
+                                                             target:self.delegate
+                                                           selector:[self.delegate selectorForEmpty]];
+            } else{
+                aErrorView = [[MmbErrorView alloc] initWithImage:image
+                                                              title:title
+                                                           subtitle:subtitle
+                                                  actionButtonTitle:btnTitle
+                                                             target:nil
+                                                           selector:nil];
+            }
+            
+        }
+        
+        aErrorView.backgroundColor = [UIColor colorWithWhite:245/255.0f alpha:1.0f];
+        aErrorView.frame = frame;
+        return aErrorView;
+    }
+    return nil;
+}
+
+- (void)selectorForEmpty{
+    self.selectorForEmptyBlock();
+}
+
 
 //- (UIView *)errorViewWithFrame:(CGRect)frame error:(NSError *)error actionTarget:(id)actionTarget actionSelector:(SEL)actionSelector {
 //    

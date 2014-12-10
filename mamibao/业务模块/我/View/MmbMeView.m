@@ -110,6 +110,7 @@
     
     UIButton *shezhiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     shezhiBtn.frame = CGRectMake(0, otherBtnView.bottom + kCellPitch, APP_CONTENT_WIDTH, 45);
+    shezhiBtn.backgroundColor = [UIColor whiteColor];
     [containerView addSubview:shezhiBtn];
     [MmbViewUtil drawLine:CGRectMake(0, 0, APP_CONTENT_WIDTH, 0.5) onView:shezhiBtn color:HEXCOLOR(0xdddddd)];
     UIImageView *shezhiImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shezhi"]];

@@ -10,4 +10,10 @@
 
 @interface MmbStatusInfo : NSObject
 
+
+- (NSString *)titleForEmpty;
+- (NSString *)subTitleForEmpty;
+- (UIImage *)imageForEmpty;
+- (NSString*)actionButtonTitleForEmpty;
+
 @end

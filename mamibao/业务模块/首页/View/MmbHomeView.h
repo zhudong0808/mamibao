@@ -12,6 +12,7 @@
 @protocol MmbHomeViewDelegate <NSObject>
 
 - (void)onclickUserInfoView;
+- (void)onClickJiaoLiuView;
 
 @end
 

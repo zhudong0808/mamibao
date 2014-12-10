@@ -165,6 +165,7 @@
     if (!_jiaoliuView) {
         _jiaoliuView = [UIButton buttonWithType:UIButtonTypeCustom];
         _jiaoliuView.frame = CGRectMake(APP_CONTENT_WIDTH/2, _zhishiView.bottom, APP_CONTENT_WIDTH/2, (TABLE_FOOTER_VIEW_HEIGHT-8)/2);
+        [_jiaoliuView addTarget:self action:@selector(onClickJiaoLiuView) forControlEvents:UIControlEventTouchUpInside];
         UIImageView *btnImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiaoliu"]];
         btnImageView.frame = CGRectMake(APP_CONTENT_WIDTH/4-30/2, 30, 30, 30);
         [_jiaoliuView addSubview:btnImageView];
@@ -191,6 +192,12 @@
 - (void)onclickUserInfoView {
     if ([self.delegate respondsToSelector:@selector(onclickUserInfoView)]) {
         [self.delegate onclickUserInfoView];
+    }
+}
+
+- (void)onClickJiaoLiuView {
+    if ([self.delegate respondsToSelector:@selector(onClickJiaoLiuView)]) {
+        [self.delegate onClickJiaoLiuView];
     }
 }
 

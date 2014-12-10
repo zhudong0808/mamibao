@@ -10,4 +10,16 @@
 
 @implementation MmbTableViewItem
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:@(self.itemHeight) forKey:@"itemHeight"];
+}
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.itemHeight = ((NSNumber *)[aDecoder decodeObjectForKey:@"itemHeight"]).floatValue;
+    }
+    return self;
+}
+
 @end

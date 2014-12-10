@@ -10,32 +10,12 @@
 
 @implementation MmbTableViewCell
 
-@synthesize item = _item;
+////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - public methods
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
++ (CGFloat)tableView:(UITableView*)tableView variantRowHeightForItem:(id)item AtIndex:(NSIndexPath*)indexPath
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
--(void)setItem:(MmbTableViewItem *)item{
-    
-}
-
-
-- (void)awakeFromNib
-{
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    return 44;
 }
 
 @end

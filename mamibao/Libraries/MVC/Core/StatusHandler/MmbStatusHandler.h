@@ -28,8 +28,13 @@
 @property (nonatomic,strong) MmbStatusInfo *statusInfo;
 @property (nonatomic,weak) id<MmbStatusDelegate> delegate;
 
+@property (nonatomic, strong) void (^selectorForErrorBlock)(NSError* error);
+@property (nonatomic, strong) void (^selectorForEmptyBlock)();
+
+
 - (id)initWithStatusInfo:(MmbStatusInfo *)statusInfo delegate:(id<MmbStatusDelegate>)delegate;
 - (void)removeStatusViewFromView:(UIView *)view;
 - (void)showLoadingViewInView:(UIView *)parentView frame:(CGRect)frame;
 - (UIView *)showViewforError:(NSError *)error inView:(UIView *)parentView frame:(CGRect)frame;
+- (UIView *)showEmptyViewInView:(UIView *)parentView frame:(CGRect)frame;
 @end

@@ -96,14 +96,57 @@
  *
  *  @param model 请求Model
  */
--(void)didLoadModel:(MmbListModel *)model{
-    [self.dataSource tableViewControllerDidLoadModel:model ForSection:model.section];
+- (void)didLoadModel:(MmbListModel *)model {
+    [self.dataSource tableViewControllerDidLoadModel:model ForSection:model.sectionNumber];
+}
+
+/**
+ *  检查是否能显示列表，不行则展示空提示页面
+ *
+ *  @param model 请求Model
+ *
+ *  @return BOOL
+ */
+- (BOOL)canShowModel:(MmbModel *)model {
+    if (![super canShowModel:model]) {
+        return NO;
+    }
+    NSInteger numberOfSections = 0;
+    NSInteger numberOfRows = 0;
+    
+    numberOfSections = [self.dataSource numberOfSectionsInTableView:self.tableView];
+    if (!numberOfSections) {
+        return NO;
+    }
+    
+    for (int i=0; i < numberOfSections; i++) {
+        numberOfRows = [self.dataSource tableView:self.tableView numberOfRowsInSection:i];
+        if (numberOfRows > 0) {
+            break;
+        }
+    }
+    
+    if (!numberOfRows) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)showEmpty:(MmbModel *)model {
+    [super showEmpty:model];
+    [self endRefreshing];
 }
 
 
--(void)showModel:(MmbModel *)model{
+- (void)showModel:(MmbModel *)model {
     [super showModel:model];
     [self reloadTableView];
+    [self endRefreshing];
+}
+
+- (void)showError:(NSError *)error withModel:(MmbModel *)model {
+    [super showError:error withModel:model];
     [self endRefreshing];
 }
 

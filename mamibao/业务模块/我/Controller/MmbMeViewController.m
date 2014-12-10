@@ -111,12 +111,13 @@
 }
 
 - (void)onClickUserInfoBtn {
-    [[MmbAuthenticateCenter shareInstance] clearAllSession];
-    [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
-        if (success == YES) {
-            [self load];
-        }
-    }];
+    if (![[MmbAuthenticateCenter shareInstance] isLogin]) {
+        [[MmbAuthenticateCenter shareInstance] authenticateWithCompletion:^(BOOL success){
+            if (success == YES) {
+                [self load];
+            }
+        }];
+    }
 }
 
 - (void)doLoginOut {

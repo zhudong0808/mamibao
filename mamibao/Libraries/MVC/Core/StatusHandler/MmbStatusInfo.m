@@ -10,4 +10,21 @@
 
 @implementation MmbStatusInfo
 
+- (NSString *)titleForEmpty {
+    return @"暂时没有数据";
+}
+
+- (NSString *)subTitleForEmpty{
+    return nil;
+}
+
+- (NSString *)actionButtonTitleForEmpty {
+    return nil;
+}
+
+- (UIImage *)imageForEmpty {
+    return [UIImage imageNamed:@"LLDefaultFailure"];
+}
+
+
 @end

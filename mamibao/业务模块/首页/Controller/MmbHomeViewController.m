@@ -13,6 +13,7 @@
 #import "MmbSettingViewController.h"
 #import "MmbMeView.h"
 #import "MmbMeViewController.h"
+#import "MmbJiaoLiuViewController.h"
 
 @interface MmbHomeViewController ()
 
@@ -163,6 +164,11 @@
             }
         }];
     }
+}
+
+- (void)onClickJiaoLiuView {
+    MmbJiaoLiuViewController *vc = [[MmbJiaoLiuViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

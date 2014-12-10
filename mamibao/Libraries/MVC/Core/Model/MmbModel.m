@@ -43,6 +43,15 @@
     [self load];
 }
 
+/**
+ 翻页加载
+ */
+- (void)loadMore {
+    
+    [self loadInternal];
+    
+}
+
 
 #pragma mark - private method
 -(BOOL)prepareForLoad{

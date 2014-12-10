@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "MmbListModel.h"
+#import "MmbTableViewItem.h"
 
 @class MmbTableViewController;
-@interface MmbTableViewDataSource : NSObject<UITableViewDataSource>
+
+
+@protocol MmbTableViewDataSource <UITableViewDataSource>
+
+@required
+
+- (Class)cellClassForItem:(MmbTableViewItem*)item AtIndex:(NSIndexPath *)indexPath;
+
+@end
+
+
+
+@interface MmbTableViewDataSource : NSObject<MmbTableViewDataSource>
 
 /**
  *  tableView dataSource 对应的controller
@@ -24,6 +37,16 @@
  *  @param section model对应的section
  */
 -(void)tableViewControllerDidLoadModel:(MmbListModel *)model ForSection:(NSInteger)section;
+
+
+/**
+ *  返回指定的Item
+ *
+ *  @param indexPath
+ *
+ *  @return MmbTableViewItem
+ */
+- (MmbTableViewItem *)itemForCellAtIndexPath:(NSIndexPath *)indexPath;
 
 
 /**
