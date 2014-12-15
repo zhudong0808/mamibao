@@ -10,6 +10,8 @@
 #import "MmbTableViewDataSource.h"
 #import "MmbTableViewItem.h"
 #import "MmbTableViewCell.h"
+#import "MmbTableViewController.h"
+
 
 @implementation MmbTableViewDelegate
 
@@ -35,6 +37,14 @@
         return 44;
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    MmbTableViewDataSource *dataSource = (MmbTableViewDataSource *)tableView.dataSource;
+    NSArray *items = dataSource.itemsForSection[@(indexPath.section)];
+    if (items.count-1 == indexPath.row) {
+        [self.controller loadMore];
+    }
 }
 
 @end

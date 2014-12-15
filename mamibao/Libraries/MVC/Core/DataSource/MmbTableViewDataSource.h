@@ -10,9 +10,6 @@
 #import "MmbListModel.h"
 #import "MmbTableViewItem.h"
 
-@class MmbTableViewController;
-
-
 @protocol MmbTableViewDataSource <UITableViewDataSource>
 
 @required
@@ -22,13 +19,20 @@
 @end
 
 
+@class MmbTableViewController;
 
 @interface MmbTableViewDataSource : NSObject<MmbTableViewDataSource>
 
 /**
  *  tableView dataSource 对应的controller
  */
-@property (nonatomic,strong) MmbTableViewController *controller;
+@property (nonatomic, weak) MmbTableViewController *controller;
+
+/**
+ * <k:NSArray v:section>
+ * section到列表数据的映射
+ */
+@property(nonatomic,strong)  NSDictionary* itemsForSection;
 
 /**
  *  绑定items和databsource

@@ -8,8 +8,12 @@
 
 #import "MmbViewController.h"
 #import "UIScrollView+SVPullToRefresh.h"
-#import "MmbTableViewDataSource.h"
-#import "MmbTableViewDelegate.h"
+#import "MmbListModel.h"
+
+
+
+@class MmbTableViewDataSource;
+@class MmbTableViewDelegate;
 
 @interface MmbTableViewController : MmbViewController
 
@@ -31,6 +35,12 @@
  */
 @property (nonatomic,strong) MmbTableViewDataSource *dataSource;
 
+
+/**
+ *  用来翻页的model，必须不为空
+ */
+@property (nonatomic, strong) MmbListModel *keyModel;
+
 /**
  *  是否需要下拉刷新
  */
@@ -40,6 +50,11 @@
 /**
  *  重新加载
  */
--(void)reload;
+- (void)reload;
+
+/**
+ *  加载更多
+ */
+- (void)loadMore;
 
 @end

@@ -39,6 +39,7 @@
     
     //注册Model
     [self registerModel:self.mmbJiaoLiuModel];
+    self.keyModel = self.mmbJiaoLiuModel;
     
     self.bNeedPullRefresh = YES;
     

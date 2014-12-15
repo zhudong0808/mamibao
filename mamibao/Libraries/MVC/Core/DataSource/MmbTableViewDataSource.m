@@ -28,6 +28,12 @@
     return self;
 }
 
+#pragma mark - getters
+
+- (NSDictionary*)itemsForSection {
+    return [_itemsForSectionInternal copy];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

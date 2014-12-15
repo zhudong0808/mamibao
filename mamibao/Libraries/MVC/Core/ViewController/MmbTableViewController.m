@@ -7,6 +7,8 @@
 //
 
 #import "MmbTableViewController.h"
+#import "MmbTableViewDataSource.h"
+#import "MmbTableViewDelegate.h"
 
 @interface MmbTableViewController ()
 
@@ -27,6 +29,7 @@
 
 -(void)setDelegate:(MmbTableViewDelegate *)delegate{
     _delegate = delegate;
+    _delegate.controller = self;
     self.tableView.delegate = delegate;
 }
 
@@ -51,6 +54,12 @@
     [self.dataSource removeAllItems];
     [self reloadTableView];
     [super reload];
+}
+
+- (void)loadMore {
+    if ([self.keyModel hasMore]) {
+        [self.keyModel loadMore];
+    }
 }
 
 

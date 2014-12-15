@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class MmbTableViewController;
+
 @interface MmbTableViewDelegate : NSObject<UITableViewDelegate>
+
+/**
+ * a weak reference to view controller
+ */
+@property (nonatomic, weak) MmbTableViewController* controller;
 
 @end

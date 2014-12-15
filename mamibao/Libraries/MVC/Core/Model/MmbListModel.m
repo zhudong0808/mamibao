@@ -12,7 +12,7 @@
 
 -(id)init{
     if (self = [super init]) {
-        self.pageSize = 20; // 默认
+        self.pageSize = 10; // 默认
     }
     return self;
 }

@@ -48,6 +48,9 @@
 -(void)reload;
 
 
+-(void)loadMore;
+
+
 @end
 
 /**
