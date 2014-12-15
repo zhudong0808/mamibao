@@ -41,7 +41,7 @@
 }
 
 
-+(void)drawLine:(CGRect)frame onView:(UIView *)pView color:(UIColor *)color{
++(UIView *)drawLine:(CGRect)frame onView:(UIView *)pView color:(UIColor *)color{
     UIView *line = [[UIView alloc] initWithFrame:frame];
     if (![[self class] isRetina]) {
         line.width = line.width<1?1:line.width;
@@ -49,6 +49,7 @@
     }
     line.backgroundColor = color;
     [pView addSubview:line];
+    return line;
 }
 
 @end
