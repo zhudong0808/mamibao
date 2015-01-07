@@ -21,7 +21,7 @@
 }
 
 -(NSString *)methodName{
-    return @"mmb.jiaoliu";
+    return @"mmb.forum.jiaoliu";
 }
 
 -(NSArray *)parseResponse:(id)JSON error:(NSError *__autoreleasing *)error{

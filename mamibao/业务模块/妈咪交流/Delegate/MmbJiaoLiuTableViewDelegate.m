@@ -7,13 +7,7 @@
 //
 
 #import "MmbJiaoLiuTableViewDelegate.h"
-#import "MmbJiaoLiuDetailViewController.h"
 
 @implementation MmbJiaoLiuTableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MmbJiaoLiuDetailViewController *vc = [[MmbJiaoLiuDetailViewController alloc] init];
-    [self.controller.navigationController pushViewController:vc animated:YES];
-}
 
 @end

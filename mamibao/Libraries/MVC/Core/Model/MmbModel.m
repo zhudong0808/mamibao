@@ -78,14 +78,14 @@
         case mmbModelRequestTypeAFNetworking:
             clz = @"MmbAFRequest";
 //            urlPath = @"api.php?";
-            urlPath = @"testapi.php";
+            urlPath = @"index.php";
             break;
         case mmbModelRequestTypeCustom:
             clz = [self customRequestClassName] ? : @"MmbRequest";
             break;
         default:
             clz = @"MmbAFRequest";
-            urlPath = @"api.php?";
+            urlPath = @"index.php?";
             break;
     }
     self.request = [NSClassFromString(clz) new];

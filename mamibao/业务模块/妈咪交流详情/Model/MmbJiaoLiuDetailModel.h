@@ -10,4 +10,7 @@
 
 @interface MmbJiaoLiuDetailModel : MmbListModel
 
+
+@property (nonatomic, strong) NSString *tid;
+
 @end

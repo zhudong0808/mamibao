@@ -87,16 +87,16 @@
     _desc.text = item.desc;
     _subjectLabel.text = item.subject;
     _contentTextLabel.text = item.content;
-    CGFloat contentHeight = [TBCityCoreTextLabel getContentHeightWithWidth:APP_CONTENT_WIDTH-2*kMarginLeftOrRight withText:_contentTextLabel.text withFont:nil];
+    CGFloat contentHeight = [TBCityCoreTextLabel getContentHeightWithWidth:APP_CONTENT_WIDTH-2*kMarginLeftOrRight withText:_contentTextLabel.text withFont:[UIFont systemFontOfSize:15]];
     _contentTextLabel.frame = CGRectMake(kMarginLeftOrRight, _subjectLabel.bottom + 10, APP_CONTENT_WIDTH-2*kMarginLeftOrRight, contentHeight);
     
-    _leftCoreTextLabel.frame = CGRectMake(kMarginLeftOrRight, _contentTextLabel.bottom + kMarginTopSmall2, APP_CONTENT_WIDTH/2 - kMarginLeftOrRight, 15);
+    _leftCoreTextLabel.frame = CGRectMake(kMarginLeftOrRight, _contentTextLabel.bottom + kMarginTop, APP_CONTENT_WIDTH/2 - kMarginLeftOrRight, 15);
     _leftCoreTextLabel.text = item.postTime;
     
-    _rightCoreTextLabel.frame = CGRectMake(APP_CONTENT_WIDTH/2, _contentTextLabel.bottom + kMarginTopSmall2, APP_CONTENT_WIDTH/2 - kMarginLeftOrRight, 15);
+    _rightCoreTextLabel.frame = CGRectMake(APP_CONTENT_WIDTH/2, _contentTextLabel.bottom + kMarginTop, APP_CONTENT_WIDTH/2 - kMarginLeftOrRight, 15);
     _rightCoreTextLabel.text = [NSString stringWithFormat:@"<img src='bundle://readIcon' width='15' height='10' /> %@    <img src='bundle://replyIcon' width='13' height='11' /> %@",item.readCount,item.replyCount];
     
-    _bottomLine.frame = CGRectMake(0, self.height-1, APP_CONTENT_WIDTH, 0.5);
+    _bottomLine.frame = CGRectMake(0, item.itemHeight-1, APP_CONTENT_WIDTH, 0.5);
 }
 
 #pragma mark - override

@@ -179,3 +179,14 @@
 }
 
 @end
+
+@implementation MmbTableViewController(UITableView)
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath component:(NSDictionary*)bundle {
+}
+
+@end
+

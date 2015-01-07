@@ -12,6 +12,7 @@
 #import "MmbJiaoLiuItem.h"
 #import "MmbJiaoLiuTableViewDataSource.h"
 #import "MmbJiaoLiuTableViewDelegate.h"
+#import "MmbJiaoLiuDetailViewController.h"
 
 @interface MmbJiaoLiuViewController ()
 
@@ -93,6 +94,14 @@
     return _mmbJiaoLiuModel;
 }
 
+
+#pragma mark -subMethods
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+    MmbJiaoLiuTableViewDataSource *dataSource = (MmbJiaoLiuTableViewDataSource *)tableView.dataSource;
+    MmbJiaoLiuItem *item = (MmbJiaoLiuItem *)[dataSource itemForCellAtIndexPath:indexPath];
+    MmbJiaoLiuDetailViewController *vc = [[MmbJiaoLiuDetailViewController alloc] initWithTid:item.tid];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning

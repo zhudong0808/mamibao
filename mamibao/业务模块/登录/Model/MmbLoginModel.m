@@ -20,7 +20,7 @@
 }
 
 -(NSString *)methodName{
-    return @"mmb.login";
+    return @"mmb.user.login";
 }
 
 -(NSArray *)parseResponse:(id)JSON error:(NSError *__autoreleasing *)error{

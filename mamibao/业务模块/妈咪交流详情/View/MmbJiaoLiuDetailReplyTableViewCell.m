@@ -31,6 +31,17 @@
 
 @property (nonatomic, strong) TBCityCoreTextLabel *contentTextLabel;
 
+@property (nonatomic, strong) UIImageView *replyActionIconView;
+
+@property (nonatomic, strong) UIButton *replyBtn;
+
+@property (nonatomic, strong) NSString *tid;
+
+@property (nonatomic, strong) NSString *pid;
+
+@property (nonatomic, strong) NSString *lou;
+
+
 @end
 
 @implementation MmbJiaoLiuDetailReplyTableViewCell
@@ -67,6 +78,18 @@
         _contentTextLabel.font = [UIFont systemFontOfSize:15];
         [self addSubview:_contentTextLabel];
         
+        _replyActionIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"replyActionIcon"]];
+        _replyActionIconView.frame = CGRectMake(kMarginLeftOrRight, _contentTextLabel.bottom+5, 13, 12);
+        [self addSubview:_replyActionIconView];
+        
+        _replyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _replyBtn.frame = CGRectMake(_replyActionIconView.right + 2, _replyActionIconView.top, 30, 12);
+        [_replyBtn setTitle:@"回复" forState:UIControlStateNormal];
+        [_replyBtn setTitleColor:HEXCOLOR(0xF89791) forState:UIControlStateNormal];
+        [_replyBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [_replyBtn addTarget:self action:@selector(onclickReplyBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_replyBtn];
+        
         _bottomLine = [MmbViewUtil drawLine:CGRectMake(0, self.height-1, APP_CONTENT_WIDTH, 0.5) onView:self color:HEXCOLOR(0xebe5e0)];
     }
     return self;
@@ -82,8 +105,21 @@
     _contentTextLabel.text = item.content;
     CGFloat contentHeight = [TBCityCoreTextLabel getContentHeightWithWidth:APP_CONTENT_WIDTH-2*kMarginLeftOrRight withText:_contentTextLabel.text withFont:nil];
     _contentTextLabel.frame = CGRectMake(kMarginLeftOrRight, _iconImageView.bottom+kMarginTopSmall2, APP_CONTENT_WIDTH-2*kMarginLeftOrRight, contentHeight+kMarginTopSmall2);
+    _replyActionIconView.frame = CGRectMake(kMarginLeftOrRight, _contentTextLabel.bottom + 5, 13, 12);
+    _replyBtn.frame = CGRectMake(_replyActionIconView.right + 2, _replyActionIconView.top, 30, 12);
+    _replyBtn.tag = [item.pid intValue];
+    _bottomLine.frame = CGRectMake(0, item.itemHeight-1, APP_CONTENT_WIDTH, 0.5);
     
-    _bottomLine.frame = CGRectMake(0, self.height-1, APP_CONTENT_WIDTH, 0.5);
+    _tid = item.tid;
+    _pid = item.pid;
+    _lou = item.lou;
+    
+}
+
+- (void)onclickReplyBtn:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(onCellComponentClickedAtIndex:Bundle:)]) {
+        [self.delegate onCellComponentClickedAtIndex:nil Bundle:@{@"tid":_tid,@"pid":_pid,@"lou":_lou}];
+    }
 }
 
 

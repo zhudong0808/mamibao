@@ -20,7 +20,7 @@
 }
 
 -(NSString *)methodName{
-    return @"mmb.userInfo";
+    return @"mmb.user.userInfo";
 }
 
 -(NSArray *)parseResponse:(id)JSON error:(NSError *__autoreleasing *)error{

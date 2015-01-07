@@ -36,5 +36,11 @@
 @property (nonatomic ,strong) NSString *replyCount;
 
 
+/**
+ *  帖子ID
+ */
+@property (nonatomic, strong) NSString *tid;
+
+
 
 @end

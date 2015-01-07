@@ -9,12 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "MmbTableViewItem.h"
 
+@protocol MmbTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)onCellComponentClickedAtIndex:(NSIndexPath*)indexPath Bundle:(NSDictionary*)extra;
+
+@end
+
 @interface MmbTableViewCell : UITableViewCell
 
 /**
  *  绑定cell和item
  */
-@property (nonatomic,strong) MmbTableViewItem *item;
+@property (nonatomic, strong) MmbTableViewItem *item;
+
+
+@property (nonatomic, strong) id<MmbTableViewCellDelegate> delegate;
 
 
 /**

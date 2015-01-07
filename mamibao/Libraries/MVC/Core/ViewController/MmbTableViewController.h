@@ -58,3 +58,17 @@
 - (void)loadMore;
 
 @end
+
+@interface MmbTableViewController(UITableView)
+
+/**
+ * tableview cell的点击事件
+ */
+- (void)tableView:(UITableView *)tableView  didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ * tableview cell的UI组件点击，bunlde中存放了自定义的参数
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath component:(NSDictionary*)bundle;
+
+
+@end

@@ -20,7 +20,7 @@
 }
 
 -(NSString *)methodName{
-    return @"mmb.home";
+    return @"mmb.common.home";
 }
 
 -(NSArray *)parseResponse:(id)JSON error:(NSError *__autoreleasing *)error{

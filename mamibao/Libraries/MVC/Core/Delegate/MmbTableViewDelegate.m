@@ -46,4 +46,23 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self.controller tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+
+#pragma mark - MmbTableViewCellDelegate
+
+- (void)onCellComponentClickedAtIndex:(NSIndexPath *)indexPath Bundle:(NSDictionary *)extra
+{
+    if(extra == nil) {
+        return [self.controller tableView:self.controller.tableView didSelectRowAtIndexPath:indexPath];
+    
+    } else {
+        return [self.controller tableView:self.controller.tableView didSelectRowAtIndexPath:indexPath component:extra];
+    }
+}
+
 @end

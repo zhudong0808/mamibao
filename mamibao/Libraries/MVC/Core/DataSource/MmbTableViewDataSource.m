@@ -58,6 +58,10 @@
         cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    //设置cell的delegate为tableView的delegate
+    MmbTableViewCell *customCell = (MmbTableViewCell *)cell;
+    customCell.delegate = (id<MmbTableViewCellDelegate>)tableView.delegate;
+    
     [(MmbTableViewCell *)cell setItem:item];
     return cell;
 }

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MmbTableViewController.h"
+#import "MmbJiaoLiuDetailView.h"
+#import "MmbJiaoLiuDetailReplyTableViewCell.h"
 
-@interface MmbJiaoLiuDetailViewController : MmbTableViewController
+
+@interface MmbJiaoLiuDetailViewController : MmbTableViewController<MmbJiaoLiuDetailViewDelegate>
+
+- (id)initWithTid:(NSString *)tid;
 
 @end
